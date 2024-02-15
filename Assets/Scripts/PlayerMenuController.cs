@@ -12,6 +12,24 @@ public class PlayerMenuController : MonoBehaviour
     private Rigidbody2D m_Rigidbody;
     private bool m_LookingRight;
 
+    private static PlayerMenuController m_Instance;
+
+    public static PlayerMenuController GetInstance() 
+    { 
+        return m_Instance; 
+    }
+
+    private void Awake()
+    {
+        if(m_Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        m_Instance = this;
+    }
+
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
