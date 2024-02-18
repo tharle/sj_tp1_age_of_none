@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febf95de5933144488522bef2edc040d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_LevelsPrefabs: []
   m_Speed: 2
 --- !u!50 &481527711
 Rigidbody2D:
@@ -469,7 +470,7 @@ Transform:
   m_GameObject: {fileID: 1051288241}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.299, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -592,17 +593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acdbd6b33f25374192263a9e526eedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LevelsPrefabs:
-  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
-  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
-  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
-  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
-  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
-  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
-  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
-  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
-  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
-  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
   m_StartingLevel: {fileID: 1693264731}
   m_DistanceSpawn: 1.5
 --- !u!1 &1077460545

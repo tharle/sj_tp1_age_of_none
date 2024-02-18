@@ -28,6 +28,7 @@ public class GameParameters
     {
         public const string START = "Start";
         public const string END = "End";
+        public const string SPOT = "Spot";
     }
 
     public class SceneName
@@ -39,5 +40,6 @@ public class GameParameters
     public class TagName {
         public const string PLAYER = "Player";
         public const string GROUND = "Ground";
+        public const string SPOT = "Spot";
     }
 }
