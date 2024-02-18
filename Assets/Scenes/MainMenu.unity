@@ -170,7 +170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febf95de5933144488522bef2edc040d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LevelsPrefabs: []
+  m_LevelsPrefabs:
+  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
+  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
+  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
+  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
+  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
+  - {fileID: 7021850949431841659, guid: f8e487d9594c18741a8e81cd296577f5, type: 3}
   m_Speed: 2
 --- !u!50 &481527711
 Rigidbody2D:
