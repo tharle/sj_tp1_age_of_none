@@ -10,6 +10,7 @@ public class PlayerMenuController : MonoBehaviour
     [SerializeField] public List<GameObject> m_LevelsPrefabs;
     [SerializeField] private float m_Speed;
     private Animator m_PlayerAnimator;
+    private SpriteRenderer m_SpriteRenderer;
     private Rigidbody2D m_Rigidbody;
     private bool m_IsLookingRight;
     private int m_IndexCurrentLevel; // 0 is menu, 1...N is Levels
@@ -36,6 +37,7 @@ public class PlayerMenuController : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_PlayerAnimator = GetComponentInChildren<Animator>();
+        m_SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         m_IsLookingRight = true;
         m_IndexCurrentLevel = 0;
     }
@@ -56,6 +58,8 @@ public class PlayerMenuController : MonoBehaviour
             m_IndexCurrentLevel = spot.GetIndexLevel();
             if (m_IndexCurrentLevel == 0) OnStopInMainMenu();
             else OnStopInLevel();
+
+            if (!m_IsLookingRight) DoFlip();
         }
     }
 
@@ -81,8 +85,11 @@ public class PlayerMenuController : MonoBehaviour
 
     private void Move()
     {
-        float axisHorizontal = Input.GetAxis(GameParameters.InputName.AXIS_HORIZONTAL);
         Vector2 velocity = m_Rigidbody.velocity;
+        if (velocity.magnitude > 0)
+            return;
+
+        float axisHorizontal = Input.GetAxis(GameParameters.InputName.AXIS_HORIZONTAL);
 
         if (!IsLastLevel() && axisHorizontal > 0) velocity = transform.right * m_Speed;
         else if (!IsMainMenu() && axisHorizontal < 0) velocity = transform.right * m_Speed * -1;
@@ -98,7 +105,7 @@ public class PlayerMenuController : MonoBehaviour
 
     public bool IsLastLevel()
     {
-        return m_IndexCurrentLevel >= m_LevelsPrefabs.Count - 1;
+        return m_IndexCurrentLevel == (CountLevels() - 1);
     }
 
     private void NotifyAnimationSpeed()
@@ -108,19 +115,16 @@ public class PlayerMenuController : MonoBehaviour
 
     private void FlipPlayer(float axisHorizontal)
     {
-        Vector3 scale = transform.localScale;
-        if (axisHorizontal < 0 && m_IsLookingRight) 
-        { 
-            m_IsLookingRight = false;
-            scale.x *= -1; // flip
-        }
-
-        if (axisHorizontal > 0 && !m_IsLookingRight)
+        if ((axisHorizontal < 0 && m_IsLookingRight) || (axisHorizontal > 0 && !m_IsLookingRight)) 
         {
-            m_IsLookingRight = true;
-            scale.x *= -1; // flip
+            DoFlip();
         }
-        transform.localScale = scale;
+    }
+
+    private void DoFlip()
+    {
+        m_IsLookingRight = !m_IsLookingRight;
+        m_SpriteRenderer.flipX = !m_SpriteRenderer.flipX;
     }
 
 

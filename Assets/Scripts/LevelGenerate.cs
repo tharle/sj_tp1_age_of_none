@@ -38,9 +38,9 @@ public class LevelGenerate : MonoBehaviour
         {
             m_LevelEndPoint = m_LastCreatedLevel.Find(GameParameters.PlataformName.END);
             m_LastCreatedLevel = SpawPlataform(m_LevelEndPoint.position);
-            m_IndexLastLevelSpawned++;
-
             ChangeIndexLevelToPlataform();
+
+            m_IndexLastLevelSpawned++;
         }
     }
 
