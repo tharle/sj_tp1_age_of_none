@@ -5,6 +5,7 @@ using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
 public class PlayerMenuController : MonoBehaviour
 {
     [SerializeField] private float m_Speed;
@@ -14,6 +15,7 @@ public class PlayerMenuController : MonoBehaviour
     private bool m_IsLookingRight;
 
     private event Action<int> m_OnChangeCurrentLevelId;
+    private event Action m_OnMoveToNextSpot;
 
     private static PlayerMenuController m_Instance;
 
@@ -65,9 +67,11 @@ public class PlayerMenuController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag(GameParameters.TagName.SPOT)) 
+        Debug.Log("EXIT TRIGGER " + collision.tag);
+        Spot spot = collision.GetComponent<Spot>();
+        if (spot != null)
         {
-            // TODO Clean Menu and Level description
+            m_OnMoveToNextSpot?.Invoke();
         }
     }
 
@@ -94,7 +98,7 @@ public class PlayerMenuController : MonoBehaviour
 
     private void NotifyAnimationSpeed()
     {
-        m_PlayerAnimator.SetFloat("velocity", m_Rigidbody.velocity.magnitude);
+        m_PlayerAnimator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY, m_Rigidbody.velocity.magnitude);
     }
 
     private void FlipPlayer(float axisHorizontal)
@@ -111,13 +115,27 @@ public class PlayerMenuController : MonoBehaviour
         m_SpriteRenderer.flipX = !m_SpriteRenderer.flipX;
     }
 
-    public void OnClickLevelSelect()
-    {
-        Move(0.5f);
-    }
+    // ----------------------------------------
+    // ACTIONS
+    // ----------------------------------------
 
     public void SubscribeOnChangeCurrentLevelId(Action<int> action)
     {
         m_OnChangeCurrentLevelId += action;
+    }
+
+    public void SubscribeOnMoveToNextSpot(Action action)
+    {
+        m_OnMoveToNextSpot += action;
+    }
+
+    public void MoveLeft()
+    {
+        Move(-0.5f);
+    }
+
+    public void MoveRight()
+    {
+        Move(0.5f);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,9 @@ public class LevelMenuController : MonoBehaviour
 {
     [SerializeField] public LevelData m_Levels;
     private int m_CurrentLevelId; // 0 is menu, 1...N is Levels
+    
+    private event Action<bool> m_OnToggleMainMenu;
+    private event Action<bool, LevelData.Level> m_OnToggleLevelMenu;
 
     private void Start()
     {
@@ -21,6 +25,13 @@ public class LevelMenuController : MonoBehaviour
     private void SubscribleAllActions()
     {
         PlayerMenuController.GetInstance().SubscribeOnChangeCurrentLevelId(OnChangeCurrentLevelId);
+        PlayerMenuController.GetInstance().SubscribeOnMoveToNextSpot(OnMoveToNextSpot);
+    }
+
+    private void OnMoveToNextSpot()
+    {
+        if(MenuStateManager.GetInstance().IsMainMenu()) m_OnToggleMainMenu?.Invoke(false);
+        else m_OnToggleLevelMenu?.Invoke(false, GetCurrentLevel());
     }
 
     private void OnChangeCurrentLevelId(int currentLevelId)
@@ -31,11 +42,14 @@ public class LevelMenuController : MonoBehaviour
         else OnStopInLevel();
     }
 
+
     private void OnStopInLevel()
     {
         EMenuState menuStateId = IsLastLevel() ? EMenuState.LAST_LEVEL : EMenuState.LEVEL_SELECT;
         MenuStateManager.GetInstance().SetCurrentState(menuStateId);
         // TODO Call animation
+
+        m_OnToggleLevelMenu?.Invoke(true, GetCurrentLevel());
     }
 
     private void OnStopInMainMenu()
@@ -43,6 +57,17 @@ public class LevelMenuController : MonoBehaviour
         MenuStateManager.GetInstance().SetCurrentState(EMenuState.MAIN_MENU);
 
         // TODO Call animation
+        m_OnToggleMainMenu?.Invoke(true);
+    }
+
+    public void SubscribeOnToggleMainMenu(Action<bool> action)
+    {
+        m_OnToggleMainMenu = action;
+    }
+
+    public void SubscribeOnToggleLevelMenu(Action<bool, LevelData.Level> action)
+    {
+        m_OnToggleLevelMenu = action;
     }
 
 
@@ -65,15 +90,33 @@ public class LevelMenuController : MonoBehaviour
         return m_Levels.levels.Count;
     }
 
-    public LevelData.Level GetLevelAt(int indexLevel)
+    public LevelData.Level GetCurrentLevel()
     {
-        return m_Levels.levels[indexLevel];
+        return GetLevelAt(m_CurrentLevelId);
     }
 
-    public GameObject GetLevelObjetAt(int indexLevel)
+    public LevelData.Level GetLevelAt(int currentLevelId)
     {
-        LevelData.Level level = GetLevelAt(indexLevel);
+        return m_Levels.levels[currentLevelId];
+    }
+
+    public GameObject GetLevelObjetAt(int currentLevelId)
+    {
+        LevelData.Level level = GetLevelAt(currentLevelId);
 
         return Resources.Load<GameObject>("Prefabs/Levels/" + level.NamePrefab);
+    }
+
+    // ----------------------------------------
+    // MOUSE EVENTS
+    // ----------------------------------------
+    public void OnClickNextLevel()
+    {
+        PlayerMenuController.GetInstance().MoveRight();
+    }
+
+    public void OnClickPreviusLevel()
+    {
+        PlayerMenuController.GetInstance().MoveLeft();
     }
 }
