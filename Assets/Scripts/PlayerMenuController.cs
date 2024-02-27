@@ -5,40 +5,31 @@ using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public enum EGameState
-{
-    MAIN_MENU,
-    LEVEL_SELECT
-}
-
 public class PlayerMenuController : MonoBehaviour
 {
-    [SerializeField] public LevelData m_Levels;
     [SerializeField] private float m_Speed;
     private Animator m_PlayerAnimator;
     private SpriteRenderer m_SpriteRenderer;
     private Rigidbody2D m_Rigidbody;
     private bool m_IsLookingRight;
-    private EGameState m_GameStateId;
-    private int m_IndexCurrentLevel; // 0 is menu, 1...N is Levels
 
+    private event Action<int> m_OnChangeCurrentLevelId;
 
     private static PlayerMenuController m_Instance;
 
-    public static PlayerMenuController GetInstance() 
-    { 
-        return m_Instance; 
+    public static PlayerMenuController GetInstance()
+    {
+        return m_Instance;
     }
 
     private void Awake()
     {
-        if(m_Instance != null)
+        if (PlayerMenuController.m_Instance != null)
         {
             Destroy(gameObject);
-            return;
         }
 
-        m_Instance = this;
+        PlayerMenuController.m_Instance = this;
     }
 
     void Start()
@@ -47,8 +38,6 @@ public class PlayerMenuController : MonoBehaviour
         m_PlayerAnimator = GetComponentInChildren<Animator>();
         m_SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         m_IsLookingRight = true;
-        m_IndexCurrentLevel = 0;
-        m_GameStateId = EGameState.MAIN_MENU;
     }
 
     // Update is called once per frame
@@ -64,33 +53,14 @@ public class PlayerMenuController : MonoBehaviour
         Spot spot = collision.GetComponent<Spot>();
         if (spot != null)
         {
-            m_IndexCurrentLevel = spot.GetIndexLevel();
+            m_Rigidbody.velocity = Vector2.zero; // Stop
 
-            if(m_IndexCurrentLevel <0) OnStopInMainMenu();
-            else OnStopInLevel();
+            //Update current LevelId
+            int currentLevelId = spot.GetLevelId();
+            m_OnChangeCurrentLevelId?.Invoke(currentLevelId);
 
             if (!m_IsLookingRight) DoFlip();
         }
-    }
-
-    private void OnStopInLevel()
-    {
-        m_Rigidbody.velocity = Vector2.zero;
-        m_GameStateId = EGameState.LEVEL_SELECT;
-        // TODO Call animation
-    }
-
-    private void OnStopInMainMenu()
-    {
-        m_Rigidbody.velocity = Vector2.zero;
-        m_GameStateId = EGameState.MAIN_MENU;
-
-        // TODO Call animation
-    }
-
-    public void OnClickLevelSelect()
-    {
-        Move(0.5f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -103,7 +73,7 @@ public class PlayerMenuController : MonoBehaviour
 
     private void Move()
     {
-        if (IsMainMenu()) return;
+        if (MenuStateManager.GetInstance().IsMainMenu()) return;
 
         float axisHorizontal = Input.GetAxis(GameParameters.InputName.AXIS_HORIZONTAL);
         Move(axisHorizontal);
@@ -115,8 +85,8 @@ public class PlayerMenuController : MonoBehaviour
         if (velocity.magnitude > 0)
             return;
 
-        if (!IsLastLevel() && axisHorizontal > 0) velocity = transform.right * m_Speed;
-        else if (!IsMainMenu() && axisHorizontal < 0) velocity = transform.right * m_Speed * -1;
+        if (!MenuStateManager.GetInstance().IsLastLevel() && axisHorizontal > 0) velocity = transform.right * m_Speed;
+        else if (!MenuStateManager.GetInstance().IsMainMenu() && axisHorizontal < 0) velocity = transform.right * m_Speed * -1;
 
         m_Rigidbody.velocity = velocity;
         FlipPlayer(axisHorizontal);
@@ -141,30 +111,13 @@ public class PlayerMenuController : MonoBehaviour
         m_SpriteRenderer.flipX = !m_SpriteRenderer.flipX;
     }
 
-    public bool IsMainMenu()
+    public void OnClickLevelSelect()
     {
-        return m_GameStateId == EGameState.MAIN_MENU;
+        Move(0.5f);
     }
 
-    public bool IsLastLevel()
+    public void SubscribeOnChangeCurrentLevelId(Action<int> action)
     {
-        return m_IndexCurrentLevel >= CountLevels() - 1;
-    }
-
-    public int CountLevels()
-    {
-        return m_Levels.levels.Count;
-    }
-
-    public LevelData.Level GetLevelAt(int indexLevel)
-    {
-        return m_Levels.levels[indexLevel];
-    }
-
-    public GameObject GetLevelObjetAt(int indexLevel)
-    {
-        LevelData.Level level = GetLevelAt(indexLevel);
-
-        return Resources.Load<GameObject>("Prefabs/Levels/" + level.NamePrefab);
+        m_OnChangeCurrentLevelId += action;
     }
 }

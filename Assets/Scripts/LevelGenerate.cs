@@ -11,10 +11,13 @@ public class LevelGenerate : MonoBehaviour
     private Transform m_LevelEndPoint;
     private Transform m_LastCreatedLevel;
 
+    private LevelMenuController m_LevelMenuController;
+
     // Start is called before the first frame update
     private void Start()
     {
         m_LastCreatedLevel = m_StartingLevel;
+        m_LevelMenuController = GetComponent<LevelMenuController>();
     }
 
     private void Update()
@@ -34,7 +37,7 @@ public class LevelGenerate : MonoBehaviour
 
     private void CreateLevelSelect()
     {
-        if(m_IndexLastLevelSpawned < PlayerMenuController.GetInstance().CountLevels())
+        if(m_IndexLastLevelSpawned < m_LevelMenuController.CountLevels())
         {
             m_LevelEndPoint = m_LastCreatedLevel.Find(GameParameters.PlataformName.END);
             m_LastCreatedLevel = SpawPlataform(m_LevelEndPoint.position);
@@ -51,7 +54,7 @@ public class LevelGenerate : MonoBehaviour
 
         if (spot != null) 
         { 
-            spot.SetIndexLevel(m_IndexLastLevelSpawned);
+            spot.SetLevelId(m_IndexLastLevelSpawned);
         }
     }
 
@@ -76,6 +79,6 @@ public class LevelGenerate : MonoBehaviour
 
     private GameObject GetRandomPlataform()
     {
-        return PlayerMenuController.GetInstance().GetLevelObjetAt(m_IndexLastLevelSpawned);
+        return m_LevelMenuController.GetLevelObjetAt(m_IndexLastLevelSpawned);
     }
 }

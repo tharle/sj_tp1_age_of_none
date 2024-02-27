@@ -5,8 +5,8 @@ using UnityEngine;
 public class Spot : MonoBehaviour
 {
 
-    private int m_IndexLevel = 0;
+    private int m_LevelId = -1;
 
-    public void SetIndexLevel(int indexLevel) {  m_IndexLevel = indexLevel; }
-    public int GetIndexLevel() { return m_IndexLevel; }
+    public void SetLevelId(int indexLevel) {  m_LevelId = indexLevel; }
+    public int GetLevelId() { return m_LevelId; }
 }

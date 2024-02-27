@@ -533,7 +533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febf95de5933144488522bef2edc040d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Levels: {fileID: 11400000, guid: b15ebea4607857a44a8c4778cfe63412, type: 2}
   m_Speed: 2
 --- !u!50 &481527711
 Rigidbody2D:
@@ -1309,8 +1308,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1057235837}
   - component: {fileID: 1057235838}
+  - component: {fileID: 1057235839}
   m_Layer: 0
-  m_Name: LevelSelectGenerate
+  m_Name: LevelMenuController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1345,6 +1345,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StartingLevel: {fileID: 1693264731}
   m_DistanceSpawn: 1.5
+--- !u!114 &1057235839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057235836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c46f8da4e51e343b5de0dbc362183a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Levels: {fileID: 11400000, guid: b15ebea4607857a44a8c4778cfe63412, type: 2}
 --- !u!1 &1077460545
 GameObject:
   m_ObjectHideFlags: 0
