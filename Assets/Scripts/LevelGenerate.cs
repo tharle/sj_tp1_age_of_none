@@ -76,6 +76,6 @@ public class LevelGenerate : MonoBehaviour
 
     private GameObject GetRandomPlataform()
     {
-        return PlayerMenuController.GetInstance().GetLevelPrefabAt(m_IndexLastLevelSpawned);
+        return PlayerMenuController.GetInstance().GetLevelObjetAt(m_IndexLastLevelSpawned);
     }
 }
