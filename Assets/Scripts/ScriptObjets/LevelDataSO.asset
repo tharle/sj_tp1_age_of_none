@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: LevelDataSO
   m_EditorClassIdentifier: 
   levels:
-  - Title: Title
-    Description: Description
+  - Title: Title 1
+    Description: Description level 1
     RankId: 3
     NamePrefab: Level_1
-  - Title: Title
-    Description: Description
+  - Title: Title 2
+    Description: Description level 2
     RankId: 2
     NamePrefab: Level_1

@@ -10,6 +10,11 @@ public class GameParameters
         public const string FLOAT_VELOCITY = "velocity";
     }
 
+    public class Directory
+    {
+        public const string RESOURCES_RANK = "Sprites/stamp_mark/";
+    }
+
     public class InputName
     {
         public const string AXIS_HORIZONTAL = "Horizontal";
