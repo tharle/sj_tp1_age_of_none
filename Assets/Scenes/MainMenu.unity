@@ -292,8 +292,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 375, y: 200}
-  m_Pivot: {x: 0.5, y: 1.33}
+  m_SizeDelta: {x: 360, y: 200}
+  m_Pivot: {x: 0.48, y: 1.45}
 --- !u!114 &173109289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,8 +349,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -407,7 +407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &263459364
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1241,9 +1241,9 @@ MonoBehaviour:
   m_MainMenuGameObject: {fileID: 1431477167}
   m_LevelMenuGameObject: {fileID: 263459363}
   m_LevelController: {fileID: 1057235839}
-  m_Rank: {fileID: 2135524918}
-  m_Title: {fileID: 1422972860}
-  m_Description: {fileID: 173109289}
+  m_RankImage: {fileID: 2135524918}
+  m_TitleText: {fileID: 1422972860}
+  m_DescriptionText: {fileID: 173109289}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,7 +2246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1431477168
 RectTransform:
   m_ObjectHideFlags: 0

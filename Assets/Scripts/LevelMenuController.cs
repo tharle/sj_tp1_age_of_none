@@ -56,7 +56,6 @@ public class LevelMenuController : MonoBehaviour
     {
         MenuStateManager.GetInstance().SetCurrentState(EMenuState.MAIN_MENU);
 
-        // TODO Call animation
         m_OnToggleMainMenu?.Invoke(true);
     }
 

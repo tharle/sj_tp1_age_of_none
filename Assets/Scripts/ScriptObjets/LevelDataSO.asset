@@ -21,3 +21,8 @@ MonoBehaviour:
     Description: Description level 2
     RankId: 2
     NamePrefab: Level_1
+  - Title: LEVEL 3
+    Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+    RankId: 0
+    NamePrefab: Level_1

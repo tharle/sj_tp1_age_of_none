@@ -39,7 +39,7 @@ public class LevelGenerate : MonoBehaviour
     {
         if(m_IndexLastLevelSpawned < m_LevelMenuController.CountLevels())
         {
-            m_LevelEndPoint = m_LastCreatedLevel.Find(GameParameters.PlataformName.END);
+            m_LevelEndPoint = m_LastCreatedLevel.Find(GameParameters.PlatformName.END);
             m_LastCreatedLevel = SpawPlataform(m_LevelEndPoint.position);
             ChangeIndexLevelToPlataform();
 
@@ -49,7 +49,7 @@ public class LevelGenerate : MonoBehaviour
 
     private void ChangeIndexLevelToPlataform() 
     {
-        Transform transformTemp = m_LastCreatedLevel.Find(GameParameters.PlataformName.SPOT);
+        Transform transformTemp = m_LastCreatedLevel.Find(GameParameters.PlatformName.SPOT);
         Spot spot = transformTemp.GetComponent<Spot>();
 
         if (spot != null) 
@@ -73,7 +73,7 @@ public class LevelGenerate : MonoBehaviour
 
     private float GetOffsetWidthLevel(Transform transformLevel)
     {
-        Transform transformLevelEnd = transformLevel.Find(GameParameters.PlataformName.END);
+        Transform transformLevelEnd = transformLevel.Find(GameParameters.PlatformName.END);
         return transformLevelEnd.position.x;
     }
 

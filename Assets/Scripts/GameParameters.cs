@@ -5,6 +5,11 @@ using UnityEngine.UIElements;
 
 public class GameParameters
 {
+    public class TypeWriteConfiguration
+    {
+        public const char BREAK_LINE = '|';
+    }
+
     public class AnimationPlayer
     {
         public const string FLOAT_VELOCITY = "velocity";
@@ -18,9 +23,10 @@ public class GameParameters
     public class InputName
     {
         public const string AXIS_HORIZONTAL = "Horizontal";
+        public const string NEXT_TEXT = "Space";
     }
 
-    public class PlataformName
+    public class PlatformName
     {
         public const string START = "Start";
         public const string END = "End";
