@@ -17,7 +17,6 @@ W/Arrow Up | Navigation vers le Haut | --- |
 S/Arrow Down | Navigation vers le Bas | --- | 
 Space/RMB sur texte | Sélection de l’option | Prochain dialogue | 
 Enter/RMB sur Start | Sélection de l’option | Entrer dans le niveau sélectionné | 
---- | --- | --- | 
 
 ## Les  niveaux: 
 
