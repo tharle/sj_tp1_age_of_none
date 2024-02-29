@@ -23,7 +23,7 @@ public class GameParameters
     public class InputName
     {
         public const string AXIS_HORIZONTAL = "Horizontal";
-        public const string NEXT_TEXT = "Space";
+        public const KeyCode NEXT_TEXT = KeyCode.Space;
     }
 
     public class PlatformName

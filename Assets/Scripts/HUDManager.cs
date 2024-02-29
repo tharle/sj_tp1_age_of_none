@@ -17,6 +17,11 @@ public class HUDManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_TitleText;
     [SerializeField] TextMeshProUGUI m_DescriptionText;
 
+    [SerializeField] GameObject m_BtStart;
+    [SerializeField] GameObject m_BtNextText;
+
+    [SerializeField] Button m_BtNextLevel;
+
     private string m_Description;
     private int m_LastPos;
     private Coroutine m_TypeWriteRoutine;
@@ -33,12 +38,9 @@ public class HUDManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(GameParameters.InputName.NEXT_TEXT)) NextText();
-    }
 
-    private void NextText()
-    {
-        if(!m_IsTyping && !m_IsEndText) m_TypeWriteRoutine = StartCoroutine(TypeWriteRoutine());
+        // GameParameters.InputName.NEXT_TEXT
+        if (Input.GetKeyDown(GameParameters.InputName.NEXT_TEXT)) OnNextText();
     }
 
     private void LoadAllRankStamps()
@@ -51,6 +53,10 @@ public class HUDManager : MonoBehaviour
         m_RankStamps[ERank.C] = Resources.Load<Sprite>(GameParameters.Directory.RESOURCES_RANK+ "C");
         m_RankStamps[ERank.NONE] = Resources.Load<Sprite>(GameParameters.Directory.RESOURCES_RANK + "NONE");
 
+    }
+    public void OnNextText()
+    {
+        if (!m_IsTyping && !m_IsEndText) m_TypeWriteRoutine = StartCoroutine(TypeWriteRoutine());
     }
 
     // ----------------------------------------
@@ -88,15 +94,16 @@ public class HUDManager : MonoBehaviour
 
         m_Description = level.Description;
         m_LastPos = 0;
-        UpdateNextText(false);
         
         m_TypeWriteRoutine =  StartCoroutine(TypeWriteRoutine());
 
     }
 
-    private void UpdateNextText(bool isNextText)
+    private void ChangeButtons()
     {
-
+        m_BtNextText.SetActive(m_LastPos > 0 && !m_IsTyping && !m_IsEndText);
+        m_BtStart.SetActive(m_IsEndText);
+        m_BtNextLevel.enabled = !MenuStateManager.GetInstance().IsLastLevel();
     }
 
     private IEnumerator TypeWriteRoutine()
@@ -104,25 +111,25 @@ public class HUDManager : MonoBehaviour
         m_IsTyping = true;
         m_IsEndText = false;
         m_DescriptionText.text = "";
+        ChangeButtons();
         for (int i= m_LastPos; i < m_Description.Length; i++)
         {
             char c = m_Description[i];
             if (c == GameParameters.TypeWriteConfiguration.BREAK_LINE)
             {
                 m_LastPos = i + 1;
-                UpdateNextText(true);
                 break;
             }
 
             if(i == (m_Description.Length - 1))
             {
                 m_IsEndText = true;
-                UpdateNextText(false);
             }
 
             m_DescriptionText.text += c;
             yield return new WaitForSeconds(0.05f); // TODO ajouter dans configuration
         }
         m_IsTyping = false;
+        ChangeButtons();
     }
 }

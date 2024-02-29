@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - Title: Title 1
-    Description: Description level 1
+    Description: 'Lorem ipsum dolor sit amet| consectetur adipiscing elit| sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. '
     RankId: 3
     NamePrefab: Level_1
   - Title: Title 2
-    Description: Description level 2
+    Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. '
     RankId: 2
     NamePrefab: Level_1
   - Title: LEVEL 3
