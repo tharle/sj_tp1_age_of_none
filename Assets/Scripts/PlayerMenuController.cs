@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 
 public class PlayerMenuController : MonoBehaviour
@@ -131,11 +127,11 @@ public class PlayerMenuController : MonoBehaviour
 
     public void MoveLeft()
     {
-        Move(-0.5f);
+        Move(-0.5f); // Hardcode Juste pour donner la direction
     }
 
     public void MoveRight()
     {
-        Move(0.5f);
+        Move(0.5f); // Hardcode Juste pour donner la direction
     }
 }

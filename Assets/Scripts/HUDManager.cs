@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -56,7 +57,11 @@ public class HUDManager : MonoBehaviour
     }
     public void OnNextText()
     {
-        if (!m_IsTyping && !m_IsEndText) m_TypeWriteRoutine = StartCoroutine(TypeWriteRoutine());
+        if (!m_IsTyping && !m_IsEndText && !MenuStateManager.GetInstance().IsMainMenu()) 
+        { 
+            m_TypeWriteRoutine = StartCoroutine(TypeWriteRoutine());
+            AudioManager.GetInstance().Play(EAudio.SFX_TEXT, Input.mousePosition);
+        }
     }
 
     // ----------------------------------------
@@ -76,6 +81,9 @@ public class HUDManager : MonoBehaviour
 
     public void OnToggleLevelMenu(bool show, LevelData.Level level)
     {
+        //Fix pour quand je ferme le unity avant
+        if (m_LevelMenuGameObject.IsDestroyed()) return;
+
         m_LevelMenuGameObject.SetActive(show);
 
         if (!show) 

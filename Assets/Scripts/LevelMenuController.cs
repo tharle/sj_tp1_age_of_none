@@ -112,10 +112,18 @@ public class LevelMenuController : MonoBehaviour
     public void OnClickNextLevel()
     {
         PlayerMenuController.GetInstance().MoveRight();
+        AudioManager.GetInstance().Play(EAudio.SFX_CONFIRM, Input.mousePosition);
     }
 
     public void OnClickPreviusLevel()
     {
         PlayerMenuController.GetInstance().MoveLeft();
+        AudioManager.GetInstance().Play(EAudio.SFX_CONFIRM, Input.mousePosition);
+    }
+
+    public void OnClickQuit()
+    {
+        AudioManager.GetInstance().Play(EAudio.SFX_CONFIRM, Input.mousePosition);
+        Application.Quit();
     }
 }
