@@ -15,6 +15,12 @@ public class GameParameters
         public const string FLOAT_VELOCITY = "velocity";
     }
 
+    public class AnimationMenu
+    {
+        public const string TRIGGER_OPEN = "Open";
+        public const string TRIGGER_CLOSE = "Close";
+    }
+
     public class Directory
     {
         public const string RESOURCES_RANK = "Sprites/stamp_mark/";

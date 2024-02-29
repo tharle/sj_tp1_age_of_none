@@ -47,7 +47,6 @@ public class PlayerMenuController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("ENTER TRIGGER " + collision.tag);
         Spot spot = collision.GetComponent<Spot>();
         if (spot != null)
         {
@@ -63,7 +62,6 @@ public class PlayerMenuController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("EXIT TRIGGER " + collision.tag);
         Spot spot = collision.GetComponent<Spot>();
         if (spot != null)
         {

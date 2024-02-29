@@ -23,6 +23,9 @@ public class HUDManager : MonoBehaviour
 
     [SerializeField] Button m_BtNextLevel;
 
+    [SerializeField] Animator m_MainMenuAnimator;
+    [SerializeField] Animator m_LevelMenuAnimator;
+
     private string m_Description;
     private int m_LastPos;
     private Coroutine m_TypeWriteRoutine;
@@ -77,6 +80,9 @@ public class HUDManager : MonoBehaviour
     public void OnToggleMainMenu(bool show)
     {
         m_MainMenuGameObject.SetActive(show);
+
+        if (show) m_MainMenuAnimator.SetTrigger(GameParameters.AnimationMenu.TRIGGER_OPEN);
+        else m_MainMenuAnimator.SetTrigger(GameParameters.AnimationMenu.TRIGGER_CLOSE);
     }
 
     public void OnToggleLevelMenu(bool show, LevelData.Level level)
@@ -89,6 +95,7 @@ public class HUDManager : MonoBehaviour
         if (!show) 
         {
             StopCoroutine(m_TypeWriteRoutine);
+            m_LevelMenuAnimator.SetTrigger(GameParameters.AnimationMenu.TRIGGER_OPEN);
             return;
         }
 

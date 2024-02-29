@@ -60,9 +60,7 @@ public class AudioManager
         {
             audioSource.Play();
             audioSource.loop = isLooping;
-        } 
-
-        
+        }
     }
 
 
