@@ -13,18 +13,34 @@ MonoBehaviour:
   m_Name: LevelDataSO
   m_EditorClassIdentifier: 
   levels:
-  - Title: Title 1
-    Description: 'Lorem ipsum dolor sit amet| consectetur adipiscing elit| sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+  - Title: 'Level 1: Newville'
+    Description: "Pendant de tr\xE8s nombreux si\xE8cles, nous avons toujours demand\xE9
+      si nous \xE9tions seuls dans l'espace, beaucoup de gens regardaient les \xE9toiles
+      et se demandaient si la v\xE9rit\xE9 \xE9tait vraiment l\xE0-bas.| Cependant,
+      en 2037, l'humanit\xE9 a eu sa r\xE9ponse de mani\xE8re douloureuse \xE0 travers
+      le premier contact avec les Pr\xE9coutes jusqu'alors inconnus.| Les frictions
+      dues \xE0 l'insouciance des Terriens ajout\xE9es au d\xE9sir extr\xEAme et
+      insatiable de contr\xF4ler toute la Voie Lact\xE9e d\xE9clench\xE8rent la guerre
+      du premier contact.| Pendant les 300 ann\xE9es terrestres suivantes, la Terre
+      fut soumise et gouvern\xE9e par les Pr\xE9coutes pendant la p\xE9riode connue
+      sous le nom de Grande Inclinaison de la Terre.| Cette p\xE9riode se termine
+      jusqu'au jour o\xF9 Hiro, un jeune Terrien n\xE9 \xE0 Newville, commence son
+      voyage \xE0 la recherche de la lib\xE9ration de son esp\xE8ce et de sa plan\xE8te."
     RankId: 3
     NamePrefab: Level_1
-  - Title: Title 2
-    Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+  - Title: 'Level 2: Nice village'
+    Description: "Avec l'aide de son nouvel ami Auturo, Hiro parvient \xE0 s'\xE9chapper
+      des camps miniers de Newville.| Au bout de quelques jours, notre jeune h\xE9ros
+      peut apercevoir les ruines de ce qui fut autrefois une ville douce : Nice Ville
+      o\xF9 l'attend une belle surprise."
     RankId: 2
     NamePrefab: Level_1
-  - Title: LEVEL 3
-    Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+  - Title: 'Level 3: Big City'
+    Description: " Industrie, industrie et encore industrie, la chaleur et la fum\xE9e
+      provenant des grandes raffineries dressent un tableau \xE0 quel point la ville
+      de Big City est d\xE9primante pour ses habitants.| Hiro et toute la r\xE9sistance
+      doivent mettre en pratique le plan visant \xE0 faire exploser le grand c\u0153ur
+      de la ville et ainsi essayer d'\xE9gratigner au moins la grande arm\xE9e des
+      Pr\xE9coutes."
     RankId: 0
     NamePrefab: Level_1
