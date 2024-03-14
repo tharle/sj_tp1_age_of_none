@@ -51,11 +51,11 @@ public class HUDManager : MonoBehaviour
     {
         m_RankStamps = new Dictionary<ERank, Sprite>();
 
-        m_RankStamps[ERank.S] = Resources.Load<Sprite>(GameParameters.Directory.RESOURCES_RANK+ "S");
-        m_RankStamps[ERank.A] = Resources.Load<Sprite>(GameParameters.Directory.RESOURCES_RANK+ "A");
-        m_RankStamps[ERank.B] = Resources.Load<Sprite>(GameParameters.Directory.RESOURCES_RANK+ "B");
-        m_RankStamps[ERank.C] = Resources.Load<Sprite>(GameParameters.Directory.RESOURCES_RANK+ "C");
-        m_RankStamps[ERank.NONE] = Resources.Load<Sprite>(GameParameters.Directory.RESOURCES_RANK + "NONE");
+        m_RankStamps[ERank.S] = Resources.Load<Sprite>(GameParameters.BundlePath.RESOURCES_RANK+ "S");
+        m_RankStamps[ERank.A] = Resources.Load<Sprite>(GameParameters.BundlePath.RESOURCES_RANK+ "A");
+        m_RankStamps[ERank.B] = Resources.Load<Sprite>(GameParameters.BundlePath.RESOURCES_RANK+ "B");
+        m_RankStamps[ERank.C] = Resources.Load<Sprite>(GameParameters.BundlePath.RESOURCES_RANK+ "C");
+        m_RankStamps[ERank.NONE] = Resources.Load<Sprite>(GameParameters.BundlePath.RESOURCES_RANK + "NONE");
 
     }
     public void OnNextText()

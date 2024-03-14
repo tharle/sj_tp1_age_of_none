@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 3442070237
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4a351db78557ddb8d0a6f70304e40435
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/BundleAssets/Sprites/stamp_mark/A.png
+Dependencies: []
