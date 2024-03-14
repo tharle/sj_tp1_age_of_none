@@ -1403,7 +1403,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2073,7 +2073,7 @@ GameObject:
   - component: {fileID: 1231618011}
   - component: {fileID: 1231618010}
   m_Layer: 5
-  m_Name: BtPrevieusPrevieus
+  m_Name: BtPreviousPrevieus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2289,7 +2289,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Previus
+  m_text: Previous
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b6aa7f4eee4f97441a14b60deaa5bc69, type: 2}
   m_sharedMaterial: {fileID: -8374970915840140065, guid: b6aa7f4eee4f97441a14b60deaa5bc69, type: 2}
