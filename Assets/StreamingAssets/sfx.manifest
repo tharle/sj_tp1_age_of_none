@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1927427547
+CRC: 2143579203
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c326b17c2ab9dc2a540f862a704c36e1
+    Hash: 904865f126fb39d15bd576462d02b16d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 9a2ca7bdbd1871f7131daf57de908e0c
@@ -13,8 +13,8 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/BundleAssets/Sounds/SFXConfirm.wav
-- Assets/BundleAssets/Sounds/SFXText.wav
-- Assets/BundleAssets/Sounds/SFXWalkDirty.wav
-- Assets/BundleAssets/Sounds/SFXRunDirty.wav
+- Assets/BundleAssets/Sounds/SFX/SFXConfirm.wav
+- Assets/BundleAssets/Sounds/SFX/SFXText.wav
+- Assets/BundleAssets/Sounds/SFX/SFXWalkDirty.wav
+- Assets/BundleAssets/Sounds/SFX/SFXRunDirty.wav
 Dependencies: []

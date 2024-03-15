@@ -36,8 +36,11 @@ public class GameParameters
     public class BundlePath
     {
         public const string RESOURCES_RANK = "Sprites/stamp_mark/";
-        public const string BUNDLE_ASSETS_INPUT = "Assets/BundleAssets";
-        public const string BUNDLE_ASSETS_OUTPUT = "Assets/StreamingAssets";
+        public const string BUNDLE_ASSETS = "Assets/BundleAssets";
+        public const string SFX = "/Sounds/SFX";
+        public const string PREFAB_LEVELS = "/Prefabs/Levels";
+        public const string SPRITES_STAMPS = "/Sprites/Stamps";
+        public const string STREAMING_ASSETS = "Assets/StreamingAssets";
     }
 
     public class InputName
