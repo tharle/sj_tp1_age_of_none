@@ -19,6 +19,24 @@ public class BundleLoader: MonoBehaviour
         return m_Instance;
     }
 
+    public T Load<T>(string bundleName, string assetName) where T : UnityEngine.Object
+    {
+        AssetBundle localAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, bundleName));
+
+        if (localAssetBundle == null)
+        {
+            Debug.LogError("Failed to load AssetBundle!");
+            return default(T);
+        }
+
+        T asset = Instantiate(localAssetBundle.LoadAsset<T>(assetName));
+        asset.name = assetName;
+
+        localAssetBundle.Unload(false);
+
+        return asset;
+    }
+
     private List<T> LoadAll<T>(string bundleName, bool IsCallUnload, params string[] assetNames) where T : UnityEngine.Object
     {
         AssetBundle localAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, bundleName));

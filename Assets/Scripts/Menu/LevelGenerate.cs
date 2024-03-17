@@ -60,10 +60,12 @@ public class LevelGenerate : MonoBehaviour
 
     private Transform SpawPlataform(Vector3 spawnPosition)
     {
-        GameObject levelSelectBase = GetRandomPlataform();
+        GameObject newLevel = GetPlataform();
 
-        spawnPosition.x += GetOffsetWidthLevel(levelSelectBase.transform);
-        GameObject newLevel = Instantiate(levelSelectBase, spawnPosition, Quaternion.identity);
+        spawnPosition.x += GetOffsetWidthLevel(newLevel.transform);
+        newLevel.transform.localPosition = spawnPosition;
+        newLevel.transform.localRotation = Quaternion.identity;
+   
         Vector3 newlevelPostion = newLevel.transform.position;
         newlevelPostion.y = m_LastCreatedLevel.transform.position.y; // prends la meme position du LastCreatedLevel
         newLevel.transform.position  = newlevelPostion;
@@ -77,7 +79,7 @@ public class LevelGenerate : MonoBehaviour
         return transformLevelEnd.position.x;
     }
 
-    private GameObject GetRandomPlataform()
+    private GameObject GetPlataform()
     {
         return m_LevelMenuController.GetLevelObjetAt(m_IndexLastLevelSpawned);
     }

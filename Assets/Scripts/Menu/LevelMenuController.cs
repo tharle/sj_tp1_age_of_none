@@ -103,7 +103,9 @@ public class LevelMenuController : MonoBehaviour
     {
         LevelData.Level level = GetLevelAt(currentLevelId);
 
-        return Resources.Load<GameObject>("Prefabs/Levels/" + level.NamePrefab);
+        GameObject levelGameObject = BundleLoader.GetInstance().Load<GameObject>(GameParameters.BundleNames.PREFAB_LEVEL, level.NamePrefab);
+        levelGameObject.name = $"Level {currentLevelId}";
+        return levelGameObject;
     }
 
     // ----------------------------------------
