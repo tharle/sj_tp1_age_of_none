@@ -12,7 +12,7 @@ public class BundleLoader: MonoBehaviour
     {
         if (m_Instance == null) 
         {
-            GameObject go = new GameObject();
+            GameObject go = new GameObject("BundleLoader");
             m_Instance = go.AddComponent<BundleLoader>();
         } 
 
@@ -61,7 +61,7 @@ public class BundleLoader: MonoBehaviour
 
     public Dictionary<EAudio, AudioClip> LoadSFX()
     {
-        Dictionary<EAudio, AudioClip> audioClipsBundle = new Dictionary<EAudio, AudioClip>();
+        Dictionary<EAudio, AudioClip> audioClipsBundle = new();
 
         string[] assetNames = { nameof(EAudio.SFXConfirm), nameof(EAudio.SFXRunDirty), nameof(EAudio.SFXWalkDirty), nameof(EAudio.SFXText) };
         List<AudioClip> audioClips = LoadAll<AudioClip>(GameParameters.BundleNames.SFX, false, assetNames);
@@ -90,5 +90,41 @@ public class BundleLoader: MonoBehaviour
         }
 
         return audioClipsBundle;
+    }
+
+    public Dictionary<ERank, Sprite> LoadAllRankStamps()
+    {
+        Dictionary<ERank, Sprite> rankStampBundle = new();
+
+        string[] spriteNames = { nameof(ERank.S), nameof(ERank.A), nameof(ERank.B), nameof(ERank.C), nameof(ERank.NONE) };
+        List<Sprite> sprites = LoadAll<Sprite>(GameParameters.BundleNames.SPRITE_STAMP, true, spriteNames);
+        foreach (Sprite sprite in sprites)
+        {
+            ERank rankId = ERank.NONE;
+            switch (sprite.name)
+            {
+                case nameof(ERank.S):
+                    rankId = ERank.S;
+                    break;
+                case nameof(ERank.A):
+                    rankId = ERank.A;
+                    break;
+                case nameof(ERank.B):
+                    rankId = ERank.B;
+                    break;
+                case nameof(ERank.C):
+                    rankId = ERank.C;
+                    break;
+                default:
+                    rankId = ERank.NONE;
+                    break;
+            }
+
+            Sprite newSprite = Instantiate(sprite);
+            newSprite.name = sprite.name;
+            rankStampBundle.Add(rankId, newSprite);
+        }
+
+        return rankStampBundle;
     }
 }
