@@ -35,10 +35,30 @@ public class AudioManager
     private void LoadAllAudioClips()
     {
         m_AudioClips = new Dictionary<EAudio, AudioClip>();
-        m_AudioClips.Add(EAudio.SFX_CONFIRM, Resources.Load<AudioClip>("Sounds/SFXConfirm"));
-        m_AudioClips.Add(EAudio.SFX_RUN_DIRTY, Resources.Load<AudioClip>("Sounds/SFXRunDirty"));
-        m_AudioClips.Add(EAudio.SFX_WALK_DIRTY, Resources.Load<AudioClip>("Sounds/SFXWalkDirty"));
-        m_AudioClips.Add(EAudio.SFX_TEXT, Resources.Load<AudioClip>("Sounds/SFXText"));
+        BundleLoader.LoadAll<AudioClip>(GameParameters.BundleNames.SFX, audioClips =>
+        {
+            foreach (AudioClip clip in audioClips)
+            {
+                EAudio audioId = EAudio.SFX_CONFIRM;
+                switch (clip.name)
+                {
+                    case "SFXConfirm":
+                        audioId = EAudio.SFX_CONFIRM;
+                        break;
+                    case "SFXRunDirty":
+                        audioId = EAudio.SFX_RUN_DIRTY;
+                        break;
+                    case "SFXWalkDirty":
+                        audioId = EAudio.SFX_WALK_DIRTY;
+                        break;
+                    case "SFXText":
+                        audioId = EAudio.SFX_TEXT;
+                        break;
+                }
+
+                m_AudioClips.Add(audioId, clip);
+            }
+        });
     }
 
     public void Play(EAudio audioClipId, Vector3 soundPosition, bool isLooping = false)
