@@ -63,7 +63,7 @@ public class HUDManager : MonoBehaviour
         if (!m_IsTyping && !m_IsEndText && !MenuStateManager.GetInstance().IsMainMenu()) 
         { 
             m_TypeWriteRoutine = StartCoroutine(TypeWriteRoutine());
-            AudioManager.GetInstance().Play(EAudio.SFX_TEXT, Input.mousePosition);
+            AudioManager.GetInstance().Play(EAudio.SFXText, Input.mousePosition);
         }
     }
 
