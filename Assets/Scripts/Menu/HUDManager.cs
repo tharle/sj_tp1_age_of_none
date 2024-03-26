@@ -26,6 +26,8 @@ public class HUDManager : MonoBehaviour
     [SerializeField] Animator m_MainMenuAnimator;
     [SerializeField] Animator m_LevelMenuAnimator;
 
+    BundleLoader m_Loader;
+
     private string m_Description;
     private int m_LastPos;
     private Coroutine m_TypeWriteRoutine;
@@ -36,6 +38,7 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
+        m_Loader = BundleLoader.Instance;
         SubscribleAllActions();
         LoadAllRankStamps();
     }
@@ -49,7 +52,7 @@ public class HUDManager : MonoBehaviour
 
     private void LoadAllRankStamps()
     {
-        m_RankStamps = BundleLoader.GetInstance().LoadAllRankStamps();
+        m_RankStamps = m_Loader.LoadAllRankStamps();
     }
     public void OnNextText()
     {

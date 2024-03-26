@@ -16,6 +16,8 @@ public class AudioManager
     private Dictionary<EAudio, AudioSource> m_AudioSourcePlaying;
     private AudioPool m_AudioPool;
 
+    private BundleLoader m_Loader;
+
     private static AudioManager m_Instance;
     public static AudioManager GetInstance() {
         if (m_Instance == null) m_Instance = new AudioManager();
@@ -27,7 +29,8 @@ public class AudioManager
     {
         m_AudioPool = new AudioPool();
         m_AudioSourcePlaying = new Dictionary<EAudio, AudioSource>();
-        m_AudioClips = BundleLoader.GetInstance().LoadSFX();
+        m_Loader = BundleLoader.Instance;
+        m_AudioClips = m_Loader.LoadSFX();
     }
 
     public void Play(EAudio audioClipId, Vector3 soundPosition, bool isLooping = false)

@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 2940990642
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 183bfcddd977531e774d2dc6e755e22f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 04496d29c011c33dec342ddeccc5f212
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 78651f3dbaad068468cb8246f427aab4, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: Achivement
+- AssemblyName: Assembly-CSharp
+  ClassName: AchivementCondition
+Assets:
+- Assets/BundleAssets/Data/AchivementData.asset
+Dependencies: []

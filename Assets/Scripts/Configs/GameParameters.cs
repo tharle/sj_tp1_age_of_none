@@ -28,19 +28,24 @@ public class GameParameters
 
     public class BundleNames
     {
+        public const string PREFAB_ACHIVEMENTS = "prefab_achivement";
+        public const string PREFAB_LEVEL = "prefab_level";
+        public const string SCRIT_OBJETS = "data";
         public const string SFX = "sfx";
         public const string SPRITE_STAMP = "sprite_stamp";
-        public const string PREFAB_LEVEL = "prefab_level";
     }
 
     public class BundlePath
     {
         public const string RESOURCES_RANK = "Sprites/stamp_mark/";
         public const string BUNDLE_ASSETS = "Assets/BundleAssets";
-        public const string SFX = "/Sounds/SFX";
-        public const string PREFAB_LEVELS = "/Prefabs/Levels";
-        public const string SPRITES_STAMPS = "/Sprites/Stamps";
         public const string STREAMING_ASSETS = "Assets/StreamingAssets";
+
+        public const string PREFAB_ACHIVEMENTS = "/Prefabs/Achivements";
+        public const string PREFAB_LEVELS = "/Prefabs/Levels";
+        public const string SCRIT_OBJETS = "/Data";
+        public const string SFX = "/Sounds/SFX";
+        public const string SPRITES_STAMPS = "/Sprites/Stamps";
     }
 
     public class InputName

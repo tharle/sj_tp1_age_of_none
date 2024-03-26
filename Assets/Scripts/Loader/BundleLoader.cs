@@ -8,15 +8,17 @@ public class BundleLoader: MonoBehaviour
 {
 
     private static BundleLoader m_Instance;
-    public static BundleLoader GetInstance()
+    public static BundleLoader Instance 
     {
-        if (m_Instance == null) 
-        {
-            GameObject go = new GameObject("BundleLoader");
-            m_Instance = go.AddComponent<BundleLoader>();
-        } 
+        get { 
+            if (m_Instance == null) 
+            {
+                GameObject go = new GameObject("BundleLoader");
+                m_Instance = go.AddComponent<BundleLoader>();
+            } 
 
-        return m_Instance;
+            return m_Instance;
+        }
     }
 
     public T Load<T>(string bundleName, string assetName) where T : UnityEngine.Object

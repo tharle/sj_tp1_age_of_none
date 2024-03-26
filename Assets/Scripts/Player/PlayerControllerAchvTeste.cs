@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static LevelData;
 
 public class PlayerControllerAchvTeste : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class PlayerControllerAchvTeste : MonoBehaviour
 
     // Externs
     private AchivementSystem m_AchivementSystem;
+    private BundleLoader m_Loader;
 
     private void Start()
     {
         m_AchivementSystem = AchivementSystem.Instance;
+        m_Loader = BundleLoader.Instance;
 
         InitData();
         SubscribeAll();
@@ -62,7 +65,7 @@ public class PlayerControllerAchvTeste : MonoBehaviour
     private void NewGame()
     {
         m_Player = new Player();
-        AchivementData achData = Resources.Load<AchivementData>("Data/Archivements");
+        AchivementData achData = m_Loader.Load<AchivementData>(GameParameters.BundleNames.SCRIT_OBJETS, nameof(AchivementData));
         m_AchivementSystem.Load(achData.Achivements);
     }
 
