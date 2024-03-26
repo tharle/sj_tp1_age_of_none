@@ -30,8 +30,14 @@ public class BundleLoader: MonoBehaviour
             Debug.LogError("Failed to load AssetBundle!");
             return default(T);
         }
+        T originalAsset = localAssetBundle.LoadAsset<T>(assetName);
+        if (originalAsset == null)
+        {
+            Debug.LogError($"Failed to load Asset with name {assetName} from the bundle {bundleName}!");
+            return default(T);
+        }
 
-        T asset = Instantiate(localAssetBundle.LoadAsset<T>(assetName));
+        T asset = Instantiate(originalAsset);
         asset.name = assetName;
 
         localAssetBundle.Unload(false);

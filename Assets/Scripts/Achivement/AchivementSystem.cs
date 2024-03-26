@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using static LevelData;
 
 public enum EAchievementFlag
 {
@@ -13,15 +14,14 @@ public enum EAchievementFlag
 }
 public class AchivementSystem : MonoBehaviour
 {
+    BundleLoader m_Loader;
+
     // Variables membres
     private Achivement[] m_Achivements = new Achivement[0];
     private Dictionary<EAchievementFlag, int> m_AchivementFlagTracker = new Dictionary<EAchievementFlag, int>();
 
     //Actions
-    public event Action<Achivement[], Dictionary<EAchievementFlag, int>> OnAchivementChange;
-
-    // Prefabs
-    private AchivementEntryVisual m_AchEntryPrefab;
+    public event Action<Achivement[]> OnAchivementChange;
 
 
     //Instance
@@ -42,8 +42,15 @@ public class AchivementSystem : MonoBehaviour
 
     private void Start()
     {
-        m_AchEntryPrefab = Resources.Load<AchivementEntryVisual>("Prefabs/Achivements/AchivementEntryVisual");
-        m_AchEntryPrefab.SetCanvas(GetComponent<Canvas>());
+        m_Loader = BundleLoader.Instance;
+    }
+
+    private AchivementEntryVisual LoadEntry()
+    {
+        GameObject go = m_Loader.Load<GameObject>(GameParameters.BundleNames.PREFAB_ACHIVEMENTS, nameof(AchivementEntryVisual));
+        AchivementEntryVisual newEntry = go.GetComponent<AchivementEntryVisual>();
+        newEntry.SetCanvas(GetComponent<Canvas>());
+        return newEntry;
     }
 
     private void ScanAchivementUnlocked(EAchievementFlag achievementFlagId)
@@ -60,11 +67,12 @@ public class AchivementSystem : MonoBehaviour
     }
     private void UnlockAchievement(Achivement data)
     {
-        AchivementEntryVisual newEntry = Instantiate(m_AchEntryPrefab, transform);
+        AchivementEntryVisual newEntry = LoadEntry();
+        newEntry = Instantiate(newEntry, transform);
         newEntry.Data = data;
 
         // Save
-        OnAchivementChange?.Invoke(m_Achivements, m_AchivementFlagTracker);
+        OnAchivementChange?.Invoke(m_Achivements);
     }
 
 

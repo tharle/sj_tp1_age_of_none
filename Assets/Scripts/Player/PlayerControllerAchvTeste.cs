@@ -69,7 +69,7 @@ public class PlayerControllerAchvTeste : MonoBehaviour
         m_AchivementSystem.Load(achData.Achivements);
     }
 
-    private void OnAchivementChange(Achivement[] achivements, Dictionary<EAchievementFlag, int> m_AchivementFlagTracker)
+    private void OnAchivementChange(Achivement[] achivements)
     {
         // Save data
         m_Player.Achivements = achivements;
