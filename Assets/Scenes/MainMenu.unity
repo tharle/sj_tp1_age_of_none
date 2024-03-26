@@ -408,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &263459364
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1399,7 +1399,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d9d6c1afcfef69c4a985346c32eef8a6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1f2384364fbbaaf439da46d88eaf4791, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2266,7 +2266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.8083, y: 0}
+  m_AnchoredPosition: {x: 6.8082886, y: 0}
   m_SizeDelta: {x: -17.0208, y: 0}
   m_Pivot: {x: 0.4, y: 0.5}
 --- !u!114 &1331696963
@@ -2517,7 +2517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1431477168
 RectTransform:
   m_ObjectHideFlags: 0
