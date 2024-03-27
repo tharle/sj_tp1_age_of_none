@@ -13,12 +13,16 @@ public class PlayerMoveController : MonoBehaviour
     private float m_GravityValue = -9.81f;
 
     private InputManager m_InputManager;
+    private Animator m_Animator;
 
+
+    // TODO : Ajouter la rotation de la camera par rapport le axis Y
 
     private void Start()
     {
         m_Controller = GetComponent<CharacterController>();
         m_InputManager = InputManager.Instance;
+        m_Animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -30,6 +34,7 @@ public class PlayerMoveController : MonoBehaviour
         }
 
         Vector2 movement = m_InputManager.GetPlayerMovement();
+        m_Animator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY, movement.magnitude);
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
         m_Controller.Move(move * Time.deltaTime * m_PlayerSpeed);
 
