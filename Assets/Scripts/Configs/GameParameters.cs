@@ -51,7 +51,9 @@ public class GameParameters
     public class InputName
     {
         public const string AXIS_HORIZONTAL = "Horizontal";
+        public const string AXIS_VERTICAL = "Vertical";
         public const KeyCode NEXT_TEXT = KeyCode.Space;
+        public const KeyCode PLAYER_JUMP = KeyCode.Space;
     }
 
     public class PlatformName
