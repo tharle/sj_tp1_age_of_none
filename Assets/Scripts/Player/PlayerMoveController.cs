@@ -12,7 +12,6 @@ public class PlayerMoveController : MonoBehaviour
     [SerializeField] private Transform m_CameraTransform;
     [SerializeField] private bool m_IsGrounded = true;
 
-
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
 
@@ -36,7 +35,7 @@ public class PlayerMoveController : MonoBehaviour
 
     void Update()
     {
-        MoveForce();
+        Move();
         Jump();
 
     }
@@ -62,7 +61,7 @@ public class PlayerMoveController : MonoBehaviour
             //Oriente le personnage vers la direction de déplacement et applique la vélocité dans la même direction
             transform.forward = directionDep;
             //velocity = directionDep * m_Speed + velocity.y * Vector3.up;
-            m_Rigidbody.AddForce(directionDep * 3, ForceMode.Force);
+            m_Rigidbody.AddForce(directionDep * m_Speed * 3 * Time.deltaTime, ForceMode.VelocityChange);
         }
 
        //m_Rigidbody.velocity = velocity;
@@ -73,6 +72,18 @@ public class PlayerMoveController : MonoBehaviour
     private void Move()
     {
         // if (m_IsInterracting) return;
+
+
+        AnimatorClipInfo[] animatorinfo = m_Animator.GetCurrentAnimatorClipInfo(0);
+        Debug.Log(animatorinfo[0].clip.name);
+        if (animatorinfo[0].clip.name == GameParameters.AnimationPlayer.NAME_RUN_TO_STOP) 
+        {
+            Vector3 velocityTemp = m_Rigidbody.velocity;
+            velocityTemp.y = 0;
+            m_Animator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY, velocityTemp.magnitude);
+            return;
+        }
+
 
         // obtient les valeurs des touches horizontales et verticales
         float hDeplacement = Input.GetAxis(GameParameters.InputName.AXIS_HORIZONTAL);
@@ -86,11 +97,12 @@ public class PlayerMoveController : MonoBehaviour
         {
             //Oriente le personnage vers la direction de déplacement et applique la vélocité dans la même direction
             transform.forward = directionDep;
-            velocity = directionDep * m_Speed + velocity.y * Vector3.up;
+            
+            velocity = directionDep * m_Speed;
         }
-
-        m_Rigidbody.velocity = velocity;
         m_Animator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY, velocity.magnitude);
+        velocity.y = m_Rigidbody.velocity.y;
+        m_Rigidbody.velocity = velocity;
     }
 
     private Transform GetCameraTransform()

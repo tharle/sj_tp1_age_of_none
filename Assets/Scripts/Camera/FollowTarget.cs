@@ -13,6 +13,9 @@ public class FollowTarget : MonoBehaviour
 
     private void Update()
     {
-        transform.position = m_ToFolow.position + m_Distance;
+        float oldY = transform.position.y;
+        Vector3 position = m_ToFolow.position + m_Distance;
+        position.y = oldY;
+        transform.position = position;
     }
 }
