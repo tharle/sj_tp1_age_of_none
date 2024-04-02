@@ -37,37 +37,7 @@ public class PlayerMoveController : MonoBehaviour
     {
         Move();
         Jump();
-
     }
-
-
-    private bool IsCameraFreeLockPressed()
-    {
-        return Input.GetMouseButton((int) MouseButton.Right);
-    }
-
-    private void MoveForce()
-    {
-        // obtient les valeurs des touches horizontales et verticales
-        float hDeplacement = Input.GetAxis(GameParameters.InputName.AXIS_HORIZONTAL);
-        float vDeplacement = Input.GetAxis(GameParameters.InputName.AXIS_VERTICAL);
-
-        //obtient la nouvelle direction ( (avant/arrièrre) + (gauche/droite) )
-        Vector3 directionDep = GetCameraTransform().forward * vDeplacement + GetCameraTransform().right * hDeplacement;
-        directionDep.y = 0; //pas de valeur en y , le cas où la caméra regarde vers le bas ou vers le haut
-        Vector3 velocity = Vector3.zero;
-        if (directionDep != Vector3.zero) //change de direction s’il y a un changement
-        {
-            //Oriente le personnage vers la direction de déplacement et applique la vélocité dans la même direction
-            transform.forward = directionDep;
-            //velocity = directionDep * m_Speed + velocity.y * Vector3.up;
-            m_Rigidbody.AddForce(directionDep * m_Speed * 3 * Time.deltaTime, ForceMode.VelocityChange);
-        }
-
-       //m_Rigidbody.velocity = velocity;
-        m_Animator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY, m_Rigidbody.velocity.magnitude);
-    }
-
 
     private void Move()
     {

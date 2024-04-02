@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ToFolow: {fileID: 487415499}
+  m_Angle: 5
 --- !u!1001 &1259468551
 PrefabInstance:
   m_ObjectHideFlags: 0
