@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMoveController : MonoBehaviour
@@ -15,7 +16,8 @@ public class PlayerMoveController : MonoBehaviour
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
 
-    // private CinemachineBrain m_CinemachineBrain;
+    private CinemachineBrain m_CinemachineBrain;
+    //private 
 
 
 
@@ -34,9 +36,37 @@ public class PlayerMoveController : MonoBehaviour
 
     void Update()
     {
-        Move();
+        MoveForce();
         Jump();
 
+    }
+
+
+    private bool IsCameraFreeLockPressed()
+    {
+        return Input.GetMouseButton((int) MouseButton.Right);
+    }
+
+    private void MoveForce()
+    {
+        // obtient les valeurs des touches horizontales et verticales
+        float hDeplacement = Input.GetAxis(GameParameters.InputName.AXIS_HORIZONTAL);
+        float vDeplacement = Input.GetAxis(GameParameters.InputName.AXIS_VERTICAL);
+
+        //obtient la nouvelle direction ( (avant/arrièrre) + (gauche/droite) )
+        Vector3 directionDep = GetCameraTransform().forward * vDeplacement + GetCameraTransform().right * hDeplacement;
+        directionDep.y = 0; //pas de valeur en y , le cas où la caméra regarde vers le bas ou vers le haut
+        Vector3 velocity = Vector3.zero;
+        if (directionDep != Vector3.zero) //change de direction s’il y a un changement
+        {
+            //Oriente le personnage vers la direction de déplacement et applique la vélocité dans la même direction
+            transform.forward = directionDep;
+            //velocity = directionDep * m_Speed + velocity.y * Vector3.up;
+            m_Rigidbody.AddForce(directionDep * 3, ForceMode.Force);
+        }
+
+       //m_Rigidbody.velocity = velocity;
+        m_Animator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY, m_Rigidbody.velocity.magnitude);
     }
 
 
@@ -56,7 +86,7 @@ public class PlayerMoveController : MonoBehaviour
         {
             //Oriente le personnage vers la direction de déplacement et applique la vélocité dans la même direction
             transform.forward = directionDep;
-            velocity = directionDep * m_Speed;
+            velocity = directionDep * m_Speed + velocity.y * Vector3.up;
         }
 
         m_Rigidbody.velocity = velocity;
@@ -71,10 +101,10 @@ public class PlayerMoveController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKey(GameParameters.InputName.PLAYER_JUMP) && m_IsGrounded)
+        if (Input.GetKeyDown(GameParameters.InputName.PLAYER_JUMP) && m_IsGrounded)
         {
             m_Rigidbody.AddForce(m_JumpForce * Vector3.up, ForceMode.Impulse);
-            m_IsGrounded = false;
+           // m_IsGrounded = false;
         }
     }
 
