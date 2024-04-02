@@ -24,7 +24,14 @@ public class PlayerGroundManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag(GameParameters.TagName.GROUND)) OnGoundEnter?.Invoke();
+        Debug.Log("collition : "+ collision.collider.tag);
+        if (collision.collider.CompareTag(GameParameters.TagName.GROUND))
+        {
+            Debug.Log("IN COLLISION WITH GROUND!!!");
+            OnGoundEnter?.Invoke();
+        }
+        
+
 
     }
 }

@@ -13,6 +13,7 @@ public class GameParameters
     public class AnimationPlayer
     {
         public const string FLOAT_VELOCITY = "velocity";
+        public const string BOOL_IS_GROUNDED = "isGrounded";
         public const string NAME_RUN_TO_STOP = "Player_Run_To_Stop";
     }
 

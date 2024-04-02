@@ -45,7 +45,6 @@ public class PlayerMoveController : MonoBehaviour
 
 
         AnimatorClipInfo[] animatorinfo = m_Animator.GetCurrentAnimatorClipInfo(0);
-        Debug.Log(animatorinfo[0].clip.name);
         if (animatorinfo[0].clip.name == GameParameters.AnimationPlayer.NAME_RUN_TO_STOP) 
         {
             Vector3 velocityTemp = m_Rigidbody.velocity;
@@ -86,13 +85,16 @@ public class PlayerMoveController : MonoBehaviour
         if (Input.GetKeyDown(GameParameters.InputName.PLAYER_JUMP) && m_IsGrounded)
         {
             m_Rigidbody.AddForce(m_JumpForce * Vector3.up, ForceMode.Impulse);
-           // m_IsGrounded = false;
+            m_IsGrounded = false;
+            m_Animator.SetBool(GameParameters.AnimationPlayer.BOOL_IS_GROUNDED, m_IsGrounded);
         }
     }
 
     private void OnGroundEnter()
     {
+        Debug.Log("ON GROUN ENTER!!!");
         m_IsGrounded = true;
+        m_Animator.SetBool(GameParameters.AnimationPlayer.BOOL_IS_GROUNDED, m_IsGrounded);
     }
 
 }
