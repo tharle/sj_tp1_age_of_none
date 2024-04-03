@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour
 {
-    [SerializeField] private Vector2 m_ValueRange = new Vector2(5, 10);
 
     private int m_Value;
 
     private void Start()
     {
-        GenerateRandomValue();
+        m_Value = 1;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -21,10 +20,4 @@ public class CoinController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void GenerateRandomValue()
-    {
-        m_Value = Mathf.FloorToInt(Random.Range(m_ValueRange.x, m_ValueRange.y));
-    }
-
 }
