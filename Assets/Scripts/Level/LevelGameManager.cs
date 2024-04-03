@@ -17,5 +17,7 @@ public class LevelGameManager : MonoBehaviour
     public void PlayerGotEndOfLevel()
     {
         // TODO
+
+        Debug.Log($"GOT THE END OF LEVEL {m_LevelType}");
     }
 }
