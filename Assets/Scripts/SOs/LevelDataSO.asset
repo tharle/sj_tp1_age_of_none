@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: LevelDataSO
   m_EditorClassIdentifier: 
   levels:
-  - Title: 'Level 1: Newville'
+  - TypeId: 0
+    Title: 'Level 1: Newville'
     Description: "Pendant de tr\xE8s nombreux si\xE8cles, nous avons toujours demand\xE9
       si nous \xE9tions seuls dans l'espace, beaucoup de gens regardaient les \xE9toiles
       et se demandaient si la v\xE9rit\xE9 \xE9tait vraiment l\xE0-bas.| Cependant,
@@ -28,14 +29,16 @@ MonoBehaviour:
       voyage \xE0 la recherche de la lib\xE9ration de son esp\xE8ce et de sa plan\xE8te."
     RankId: 3
     NamePrefab: Level_1
-  - Title: 'Level 2: Nice village'
+  - TypeId: 1
+    Title: 'Level 2: Nice village'
     Description: "Avec l'aide de son nouvel ami Auturo, Hiro parvient \xE0 s'\xE9chapper
       des camps miniers de Newville.| Au bout de quelques jours, notre jeune h\xE9ros
       peut apercevoir les ruines de ce qui fut autrefois une ville douce : Nice Ville
       o\xF9 l'attend une belle surprise."
     RankId: 2
     NamePrefab: Level_1
-  - Title: 'Level 3: Big City'
+  - TypeId: 2
+    Title: 'Level 3: Big City'
     Description: " Industrie, industrie et encore industrie, la chaleur et la fum\xE9e
       provenant des grandes raffineries dressent un tableau \xE0 quel point la ville
       de Big City est d\xE9primante pour ses habitants.| Hiro et toute la r\xE9sistance

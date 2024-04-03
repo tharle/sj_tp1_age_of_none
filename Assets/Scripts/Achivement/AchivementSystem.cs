@@ -10,7 +10,10 @@ using static LevelData;
 public enum EAchievementFlag
 {
     GoblinsKilledCount,
-    PlayerDeathCount
+    PlayerDeathCount,
+    FinishedLevel1,
+    FinishedLevel2,
+    FinishedLevel3
 }
 public class AchivementSystem : MonoBehaviour
 {

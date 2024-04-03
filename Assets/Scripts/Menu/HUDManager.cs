@@ -81,7 +81,7 @@ public class HUDManager : MonoBehaviour
         else m_MainMenuAnimator.SetTrigger(GameParameters.AnimationMenu.TRIGGER_CLOSE);
     }
 
-    public void OnToggleLevelMenu(bool show, LevelData.Level level)
+    public void OnToggleLevelMenu(bool show, Level level)
     {
         //Fix pour quand je ferme le unity avant
         if (m_LevelMenuGameObject.IsDestroyed()) return;
@@ -98,7 +98,7 @@ public class HUDManager : MonoBehaviour
         FillLevelInfos(level);
     }
 
-    private void FillLevelInfos(LevelData.Level level) 
+    private void FillLevelInfos(Level level) 
     {
         m_TitleText.text = level.Title;
         m_RankImage.sprite = m_RankStamps[level.RankId];

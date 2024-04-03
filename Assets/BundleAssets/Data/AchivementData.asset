@@ -29,3 +29,41 @@ MonoBehaviour:
     - AchievementFlagId: 0
       Value: 30
       Unlocked: 0
+  - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
+    Title: A Start is born in Newville.
+    Description: Finished the level "Newville"
+    Unlocked: 0
+    Conditions:
+    - AchievementFlagId: 2
+      Value: 1
+      Unlocked: 0
+  - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
+    Title: 'It''s Nice it''s a ville. But, it''s not a nice ville. '
+    Description: Finished the level "Nice Ville"
+    Unlocked: 0
+    Conditions:
+    - AchievementFlagId: 3
+      Value: 1
+      Unlocked: 0
+  - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
+    Title: All the routes turn to Big City
+    Description: Finished the level "Big City"
+    Unlocked: 0
+    Conditions:
+    - AchievementFlagId: 4
+      Value: 1
+      Unlocked: 0
+  - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
+    Title: At the end, we are Free
+    Description: Finished the 3 levels
+    Unlocked: 0
+    Conditions:
+    - AchievementFlagId: 2
+      Value: 1
+      Unlocked: 0
+    - AchievementFlagId: 3
+      Value: 1
+      Unlocked: 0
+    - AchievementFlagId: 4
+      Value: 1
+      Unlocked: 0

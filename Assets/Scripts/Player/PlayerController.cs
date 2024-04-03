@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Player m_Player;
+
     private int m_CountCoins;
 
     public event Action<int> OnChangeCoinValue;

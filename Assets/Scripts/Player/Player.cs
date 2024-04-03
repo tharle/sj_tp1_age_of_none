@@ -7,4 +7,5 @@ using UnityEngine;
 public struct Player
 {
     public Achivement[] Achivements;
+    private Level[] Levels;
 }

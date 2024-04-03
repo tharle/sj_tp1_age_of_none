@@ -10,7 +10,7 @@ public class LevelMenuController : MonoBehaviour
     private int m_CurrentLevelId; // 0 is menu, 1...N is Levels
     
     private event Action<bool> m_OnToggleMainMenu;
-    private event Action<bool, LevelData.Level> m_OnToggleLevelMenu;
+    private event Action<bool, Level> m_OnToggleLevelMenu;
     private BundleLoader m_Loader;
 
     private void Start()
@@ -66,7 +66,7 @@ public class LevelMenuController : MonoBehaviour
         m_OnToggleMainMenu = action;
     }
 
-    public void SubscribeOnToggleLevelMenu(Action<bool, LevelData.Level> action)
+    public void SubscribeOnToggleLevelMenu(Action<bool, Level> action)
     {
         m_OnToggleLevelMenu = action;
     }
@@ -91,19 +91,19 @@ public class LevelMenuController : MonoBehaviour
         return m_Levels.levels.Count;
     }
 
-    public LevelData.Level GetCurrentLevel()
+    public Level GetCurrentLevel()
     {
         return GetLevelAt(m_CurrentLevelId);
     }
 
-    public LevelData.Level GetLevelAt(int currentLevelId)
+    public Level GetLevelAt(int currentLevelId)
     {
         return m_Levels.levels[currentLevelId];
     }
 
     public GameObject GetLevelObjetAt(int currentLevelId)
     {
-        LevelData.Level level = GetLevelAt(currentLevelId);
+        Level level = GetLevelAt(currentLevelId);
 
         GameObject levelGameObject = m_Loader.Load<GameObject>(GameParameters.BundleNames.PREFAB_LEVEL, level.NamePrefab);
         levelGameObject.name = $"Level {currentLevelId}";

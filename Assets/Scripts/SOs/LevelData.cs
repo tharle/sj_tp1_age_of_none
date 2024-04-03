@@ -13,17 +13,26 @@ public enum ERank
     S
 }
 
+
+[Serializable]
+public struct Level
+{
+    public enum EType
+    {
+        Level1,
+        Level2,
+        Level3
+    }
+
+    public EType TypeId;
+    public string Title;
+    public string Description;
+    public ERank RankId;
+    public string NamePrefab;
+}
+
 [CreateAssetMenu]
 public class LevelData : ScriptableObject
 {
     public List<Level> levels = new List<Level>();
-    
-    [Serializable]    
-    public struct Level
-    {
-        public string Title;
-        public string Description;
-        public ERank RankId;
-        public string NamePrefab;
-    }
 }
