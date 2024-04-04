@@ -8,6 +8,8 @@ public class LevelGameManager : MonoBehaviour
     [SerializeField] private Level.EType m_LevelType;
     [SerializeField] private LevelData m_LevelData; // scripted object
 
+    AchivementSystem m_AchivementSystem;
+
 
     private Level m_Level;
 
@@ -16,6 +18,7 @@ public class LevelGameManager : MonoBehaviour
     void Start()
     {
         m_PlayerController = PlayerController.Instance;
+        m_AchivementSystem = AchivementSystem.Instance;
     }
 
     public void PlayerGotEndOfLevel()
@@ -26,15 +29,33 @@ public class LevelGameManager : MonoBehaviour
         LevelHistoric oldLevelGameData = new LevelHistoric();
         SaveSystem.Load(data => oldLevelGameData = data.PlayerData.GetLevel(m_LevelType));
 
-        //TODO: Aficher le resultat dans l'écran
         bool IsNewRecord = oldLevelGameData.RankId < newLevelGameData.RankId;
         if (IsNewRecord)
         {
             SaveSystem.Save(newLevelGameData);
         }
 
-        // TODO
+        m_AchivementSystem.AddProgress(ToAchievementFlagId());
         Debug.Log($"GOT THE END OF LEVEL {m_LevelType}");
+    }
+
+    private EAchievementFlag ToAchievementFlagId()
+    {
+        EAchievementFlag achievementFlagId = EAchievementFlag.FinishedLevel1;
+        switch (m_LevelType)
+        {
+            case Level.EType.Level1:
+                achievementFlagId = EAchievementFlag.FinishedLevel1;
+                break;
+            case Level.EType.Level2:
+                achievementFlagId = EAchievementFlag.FinishedLevel2;
+                break;
+            case Level.EType.Level3:
+                achievementFlagId = EAchievementFlag.FinishedLevel2;
+                break;
+        }
+
+        return achievementFlagId;
     }
 
     private LevelHistoric ProcessLevelProgress()
