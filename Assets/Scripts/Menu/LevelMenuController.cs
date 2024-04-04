@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LevelMenuController : MonoBehaviour
 {
-    [SerializeField] public LevelData m_Levels;
+    [SerializeField] public LevelData m_LevelData;
     private int m_CurrentLevelId; // 0 is menu, 1...N is Levels
     
     private event Action<bool> m_OnToggleMainMenu;
@@ -18,6 +18,21 @@ public class LevelMenuController : MonoBehaviour
         m_Loader = BundleLoader.Instance;
         m_CurrentLevelId = -1;
         SubscribleAllActions();
+        LoadLevelHistoricProgress();
+    }
+
+    private void LoadLevelHistoricProgress()
+    {
+        
+        SaveSystem.Load(data => {
+            List<LevelHistoric> levelHistoric = data.PlayerData.Levels;
+            for(int i = 0; i< m_LevelData.levels.Count; i++)
+            {
+                Level level = m_LevelData.levels[i];
+                level.RankId = levelHistoric.Find(levelHistoric => level.TypeId == levelHistoric.TypeId).RankId;
+                m_LevelData.levels[i] = level;
+            }
+        });
     }
 
     // ----------------------------------------
@@ -88,7 +103,7 @@ public class LevelMenuController : MonoBehaviour
 
     public int CountLevels()
     {
-        return m_Levels.levels.Count;
+        return m_LevelData.levels.Count;
     }
 
     public Level GetCurrentLevel()
@@ -98,7 +113,7 @@ public class LevelMenuController : MonoBehaviour
 
     public Level GetLevelAt(int currentLevelId)
     {
-        return m_Levels.levels[currentLevelId];
+        return m_LevelData.levels[currentLevelId];
     }
 
     public GameObject GetLevelObjetAt(int currentLevelId)

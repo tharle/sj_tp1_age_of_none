@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -14,6 +15,7 @@ public class PlayerMenuController : MonoBehaviour
     private event Action m_OnMoveToNextSpot;
 
     private static PlayerMenuController m_Instance;
+
 
     public static PlayerMenuController GetInstance()
     {
