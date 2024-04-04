@@ -87,7 +87,7 @@ public class LevelGameManager : MonoBehaviour
                 achievementFlagId = EAchievementFlag.FinishedLevel2;
                 break;
             case Level.EType.Level3:
-                achievementFlagId = EAchievementFlag.FinishedLevel2;
+                achievementFlagId = EAchievementFlag.FinishedLevel3;
                 break;
         }
 

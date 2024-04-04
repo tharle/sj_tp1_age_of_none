@@ -2511,7 +2511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92df1d840910bda47aaf51176c750323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LevelType: 2
+  m_LevelType: 0
   m_LevelData: {fileID: 11400000, guid: b15ebea4607857a44a8c4778cfe63412, type: 2}
 --- !u!4 &1839923136
 Transform:
