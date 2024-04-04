@@ -1169,6 +1169,7 @@ GameObject:
   - component: {fileID: 894501977}
   - component: {fileID: 894501976}
   - component: {fileID: 894501980}
+  - component: {fileID: 894501981}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -1283,6 +1284,18 @@ MonoBehaviour:
   m_BtNextLevel: {fileID: 446095567}
   m_MainMenuAnimator: {fileID: 1431477171}
   m_LevelMenuAnimator: {fileID: 263459365}
+--- !u!114 &894501981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894501975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83982844588cdf40b13adca6813d0ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3161,7 +3174,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1651165062}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 894501980}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: OnClickStartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1651165062
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     public event Action<int> OnChangeCoinValue;
 
+    public event Action<ERank> OnShowProgress;
+
     private static PlayerController m_Instance;
     public static PlayerController Instance { get { return m_Instance; } }
 
@@ -22,7 +24,6 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
 
         m_Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour
         if (!m_IsPlayerDied) rank++;
 
         rank += Mathf.FloorToInt(3 * m_CoinsCount / m_CoinsMax);
+
+        OnShowProgress?.Invoke((ERank)rank);
 
         return (ERank) rank;
     }

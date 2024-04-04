@@ -20,6 +20,7 @@ public class LevelGameManager : MonoBehaviour
 
     public void PlayerGotEndOfLevel()
     {
+        Time.timeScale = 0f;
         LevelHistoric newLevelGameData = ProcessLevelProgress();
 
         LevelHistoric oldLevelGameData = new LevelHistoric();

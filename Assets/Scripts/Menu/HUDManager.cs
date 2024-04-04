@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static Level;
 
 public class HUDManager : MonoBehaviour
 {
@@ -26,13 +27,14 @@ public class HUDManager : MonoBehaviour
     [SerializeField] Animator m_MainMenuAnimator;
     [SerializeField] Animator m_LevelMenuAnimator;
 
-    BundleLoader m_Loader;
+    private BundleLoader m_Loader;
 
     private string m_Description;
     private int m_LastPos;
     private Coroutine m_TypeWriteRoutine;
     private bool m_IsTyping;
     private bool m_IsEndText;
+    private Level.EType m_EType;
 
     Dictionary<ERank, Sprite> m_RankStamps = new Dictionary<ERank, Sprite>();
 
@@ -45,8 +47,6 @@ public class HUDManager : MonoBehaviour
 
     private void Update()
     {
-
-        // GameParameters.InputName.NEXT_TEXT
         if (Input.GetKeyDown(GameParameters.InputName.NEXT_TEXT)) OnNextText();
     }
 
@@ -63,6 +63,22 @@ public class HUDManager : MonoBehaviour
         }
     }
 
+    public void OnClickStartLevel()
+    {
+        switch (m_EType)
+        {
+            case EType.Level1:
+                SceneController.OnClickLevel1();
+                break;
+            case EType.Level2:
+                SceneController.OnClickLevel2();
+                break;
+            case EType.Level3:
+                SceneController.OnClickLevel3();
+                break;
+        }
+    }
+
     // ----------------------------------------
     // ACTIONS
     // ----------------------------------------
@@ -73,7 +89,7 @@ public class HUDManager : MonoBehaviour
         m_LevelController.SubscribeOnToggleLevelMenu(OnToggleLevelMenu);
     }
 
-    public void OnToggleMainMenu(bool show)
+    private void OnToggleMainMenu(bool show)
     {
         m_MainMenuGameObject.SetActive(show);
 
@@ -81,7 +97,7 @@ public class HUDManager : MonoBehaviour
         else m_MainMenuAnimator.SetTrigger(GameParameters.AnimationMenu.TRIGGER_CLOSE);
     }
 
-    public void OnToggleLevelMenu(bool show, Level level)
+    private void OnToggleLevelMenu(bool show, Level level)
     {
         //Fix pour quand je ferme le unity avant
         if (m_LevelMenuGameObject.IsDestroyed()) return;
@@ -105,7 +121,8 @@ public class HUDManager : MonoBehaviour
 
         m_Description = level.Description;
         m_LastPos = 0;
-        
+        m_EType = level.TypeId;
+
         m_TypeWriteRoutine =  StartCoroutine(TypeWriteRoutine());
 
     }
