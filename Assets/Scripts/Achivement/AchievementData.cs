@@ -16,14 +16,16 @@ public struct AchievementData
     public bool VerifyAndUnlock(AchivementSystem system)
     {
         Unlocked = true;
-        foreach (AchivementCondition condition in Conditions)
+        for (int i = 0; i < Conditions.Count; i++ )
         {
+            AchivementCondition condition = Conditions[i];
             if (condition.Unlocked) continue;
 
             int flagValue = system.GetArchivementFlagValue(condition.AchievementFlagId);
 
             Unlocked = flagValue >= condition.Value;
             condition.SetUnlocked(Unlocked);
+            Conditions[i] = condition;
 
             if (!Unlocked) return false;
         }

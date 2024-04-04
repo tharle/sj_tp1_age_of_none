@@ -27,7 +27,7 @@ MonoBehaviour:
       sous le nom de Grande Inclinaison de la Terre.| Cette p\xE9riode se termine
       jusqu'au jour o\xF9 Hiro, un jeune Terrien n\xE9 \xE0 Newville, commence son
       voyage \xE0 la recherche de la lib\xE9ration de son esp\xE8ce et de sa plan\xE8te."
-    RankId: 3
+    RankId: 0
     NamePrefab: Level_1
   - TypeId: 1
     Title: 'Level 2: Nice village'
@@ -35,7 +35,7 @@ MonoBehaviour:
       des camps miniers de Newville.| Au bout de quelques jours, notre jeune h\xE9ros
       peut apercevoir les ruines de ce qui fut autrefois une ville douce : Nice Ville
       o\xF9 l'attend une belle surprise."
-    RankId: 2
+    RankId: 0
     NamePrefab: Level_1
   - TypeId: 2
     Title: 'Level 3: Big City'

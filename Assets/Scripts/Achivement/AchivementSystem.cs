@@ -81,13 +81,31 @@ public class AchivementSystem : MonoBehaviour
 
     public void Load(AchievementData[] achivements)
     {
-        Load(achivements, new Dictionary<EAchievementFlag, int>());
+        Dictionary<EAchievementFlag, int> achievementFlagTracker = new Dictionary<EAchievementFlag, int>();
+
+
+        // LOAD conditions
+        foreach(AchievementData achData in achivements)
+        {
+            foreach (AchivementCondition condition in achData.Conditions)
+            {
+                if (!condition.Unlocked) continue; // Si la condtion est pas débloque, on l'ignore
+                 
+                // Si la condtion est débloqué, on prends la valeur par défault de déblocage
+                if (!achievementFlagTracker.ContainsKey(condition.AchievementFlagId))
+                {
+                    achievementFlagTracker.Add(condition.AchievementFlagId, condition.Value);
+                }
+            }
+        }
+
+        Load(achivements, achievementFlagTracker);
     }
 
-    public void Load(AchievementData[] achivements, Dictionary<EAchievementFlag, int> achivementFlagTracker)
+    public void Load(AchievementData[] achivements, Dictionary<EAchievementFlag, int> achievementFlagTracker)
     {
         m_Achivements = achivements;
-        m_AchivementFlagTracker = achivementFlagTracker;
+        m_AchivementFlagTracker = achievementFlagTracker;
     }
 
     public void AddProgress(EAchievementFlag achievementId)
