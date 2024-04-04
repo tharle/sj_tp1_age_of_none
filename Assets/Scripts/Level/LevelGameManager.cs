@@ -8,16 +8,15 @@ public class LevelGameManager : MonoBehaviour
 {
     [SerializeField] private Level.EType m_LevelType;
     [SerializeField] private LevelData m_LevelData; // scripted object
-
-    AchivementSystem m_AchivementSystem;
-
-
     private Level m_Level;
+    private AchievementData[] m_Achievements;
 
+    private AchivementSystem m_AchivementSystem;
     private PlayerController m_PlayerController;
     private BundleLoader m_Loader;
 
-    private AchievementData[] m_Achievements;
+    public event Action<Level> OnLoadLevelInfos;
+
 
     void Start()
     {
@@ -41,6 +40,15 @@ public class LevelGameManager : MonoBehaviour
     private void LoadData()
     {
         SaveSystem.Load(LoadAchievementData, NewAchievementData);
+
+        LoadLevelInfos();
+    }
+
+    private void LoadLevelInfos()
+    {
+        if(m_LevelData) m_Level = m_LevelData.levels.Find(level => level.TypeId == m_LevelType);
+
+        OnLoadLevelInfos?.Invoke(m_Level);
     }
 
     private void LoadAchievementData(SaveData data)

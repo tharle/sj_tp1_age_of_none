@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Player m_Player;
-
-
     private int m_CoinsCount;
     private int m_CoinsMax;
     private bool m_IsPlayerDied = false;
