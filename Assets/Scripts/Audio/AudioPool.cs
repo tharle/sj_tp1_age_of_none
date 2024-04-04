@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioPool
@@ -8,6 +10,7 @@ public class AudioPool
 
     public AudioSource GetAvailable()
     {
+        //CleanAllDestroyed();
         AudioSource audio = m_AudioPool.Find(audio => !audio.isPlaying);
         if(audio == null)
         {
@@ -19,5 +22,15 @@ public class AudioPool
 
         return audio;
 
+    }
+
+    private void CleanAllDestroyed()
+    {
+        if (m_AudioPool.Count <= 0) return;
+
+        for (int i = m_AudioPool.Count - 1; i <=0; i--)
+        {
+            if (m_AudioPool[i].IsDestroyed()) m_AudioPool.RemoveAt(i);
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -33,8 +34,20 @@ public class AudioManager
         m_AudioClips = m_Loader.LoadSFX();
     }
 
+    public void CleanAllDestroyed()
+    {
+        Dictionary<EAudio, AudioSource> newAudioSourcePlaying = new();
+        foreach (KeyValuePair<EAudio, AudioSource> entry in m_AudioSourcePlaying)
+        {
+            if(!entry.Value.IsDestroyed()) newAudioSourcePlaying.Add(entry.Key, entry.Value);
+        }
+
+        m_AudioSourcePlaying = newAudioSourcePlaying;
+    }
+
     public void Play(EAudio audioClipId, Vector3 soundPosition, bool isLooping = false)
     {
+        CleanAllDestroyed();
         AudioSource audioSource;
         if (m_AudioSourcePlaying.ContainsKey(audioClipId))
         {
@@ -58,6 +71,7 @@ public class AudioManager
 
     public void Stop(EAudio audioClipId)
     {
+        CleanAllDestroyed();
         if (m_AudioSourcePlaying.ContainsKey(audioClipId)) m_AudioSourcePlaying[audioClipId].Stop();
     }
 }

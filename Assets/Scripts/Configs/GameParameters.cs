@@ -69,8 +69,8 @@ public class GameParameters
     {
         public const string MAIN_MENU = "MainMenu";
         public const string LEVEL_1 = "GymControls";
-        public const string LEVEL_2 = "Level2";
-        public const string LEVEL_3 = "Level3";
+        public const string LEVEL_2 = "GymControls";
+        public const string LEVEL_3 = "GymControls";
     }
 
     public class TagName {
