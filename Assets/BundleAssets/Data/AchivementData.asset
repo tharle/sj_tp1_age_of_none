@@ -13,24 +13,8 @@ MonoBehaviour:
   m_Name: AchivementData
   m_EditorClassIdentifier: 
   Achivements:
-  - Icon: {fileID: 21300000, guid: 7bcc020f121ab7448884a751ea232a55, type: 3}
-    Title: Another day to die.
-    Description: 'Die 10 times. '
-    Unlocked: 0
-    Conditions:
-    - AchievementFlagId: 1
-      Value: 10
-      Unlocked: 0
-  - Icon: {fileID: 21300000, guid: c44d5df3c8177404ea6cc57dfce196d5, type: 3}
-    Title: Kill them all!
-    Description: Kill 30 Goblins
-    Unlocked: 0
-    Conditions:
-    - AchievementFlagId: 0
-      Value: 30
-      Unlocked: 0
   - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
-    Title: A Start is born in Newville.
+    Title: A Start is born!
     Description: Finished the level "Newville"
     Unlocked: 0
     Conditions:
@@ -38,7 +22,7 @@ MonoBehaviour:
       Value: 1
       Unlocked: 0
   - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
-    Title: 'It''s Nice it''s a ville. But, it''s not a nice ville. '
+    Title: All time be Nice
     Description: Finished the level "Nice Ville"
     Unlocked: 0
     Conditions:
@@ -46,7 +30,7 @@ MonoBehaviour:
       Value: 1
       Unlocked: 0
   - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
-    Title: All the routes turn to Big City
+    Title: Industrie, Industrie and more
     Description: Finished the level "Big City"
     Unlocked: 0
     Conditions:
@@ -54,8 +38,8 @@ MonoBehaviour:
       Value: 1
       Unlocked: 0
   - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
-    Title: At the end, we are Free
-    Description: Finished the 3 levels
+    Title: It's not the End
+    Description: Finished all tree levels
     Unlocked: 0
     Conditions:
     - AchievementFlagId: 2
