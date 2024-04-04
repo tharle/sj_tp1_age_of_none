@@ -13,41 +13,41 @@ MonoBehaviour:
   m_Name: AchivementData
   m_EditorClassIdentifier: 
   Achivements:
-  - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
+  - Icon: {fileID: 21300000, guid: 5295668714264e4439e3677fc08d5785, type: 3}
     Title: A Start is born!
     Description: Finished the level "Newville"
     Unlocked: 0
     Conditions:
-    - AchievementFlagId: 2
+    - AchievementFlagId: 0
       Value: 1
       Unlocked: 0
-  - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
+  - Icon: {fileID: 21300000, guid: 017682429e7eb97429462349e0a8d15e, type: 3}
     Title: All time be Nice
     Description: Finished the level "Nice Ville"
     Unlocked: 0
     Conditions:
-    - AchievementFlagId: 3
+    - AchievementFlagId: 1
       Value: 1
       Unlocked: 0
-  - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
+  - Icon: {fileID: 21300000, guid: 72b4671635a662049882aa5099cabd64, type: 3}
     Title: Industrie, Industrie and more
     Description: Finished the level "Big City"
-    Unlocked: 0
-    Conditions:
-    - AchievementFlagId: 4
-      Value: 1
-      Unlocked: 0
-  - Icon: {fileID: -479522560, guid: 792eadd69c7166c4396bc690e88789d3, type: 3}
-    Title: It's not the End
-    Description: Finished all tree levels
     Unlocked: 0
     Conditions:
     - AchievementFlagId: 2
       Value: 1
       Unlocked: 0
-    - AchievementFlagId: 3
+  - Icon: {fileID: 21300000, guid: 370c1a8a8e63f93419dc4201d55233e1, type: 3}
+    Title: It's not the End
+    Description: Finished all tree levels
+    Unlocked: 0
+    Conditions:
+    - AchievementFlagId: 0
       Value: 1
       Unlocked: 0
-    - AchievementFlagId: 4
+    - AchievementFlagId: 1
+      Value: 1
+      Unlocked: 0
+    - AchievementFlagId: 2
       Value: 1
       Unlocked: 0

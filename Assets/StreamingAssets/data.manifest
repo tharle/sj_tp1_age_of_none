@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3739313680
+CRC: 1830076719
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6e198564ee53298c993587642ca68e20
+    Hash: 5758cc1a3c880f7baf4ecc95b102916b
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 04496d29c011c33dec342ddeccc5f212
+    Hash: ec4e4494406c1f80464f965743dd10fb
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -19,7 +19,7 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
-  ClassName: Achivement
+  ClassName: AchievementData
 - AssemblyName: Assembly-CSharp
   ClassName: AchivementCondition
 Assets:

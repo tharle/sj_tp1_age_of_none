@@ -26,14 +26,20 @@ public class PlayerControllerAchvTeste : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            m_AchivementSystem.AddProgress(EAchievementFlag.GoblinsKilledCount);
-            Debug.Log("YOU KILL A GOBLIN!");
+            m_AchivementSystem.AddProgress(EAchievementFlag.FinishedLevel1);
+            Debug.Log("L1!");
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            m_AchivementSystem.AddProgress(EAchievementFlag.FinishedLevel2);
+            Debug.Log("L2!");
         }
 
         if (Input.GetKeyDown(KeyCode.V))
         {
-            m_AchivementSystem.AddProgress(EAchievementFlag.PlayerDeathCount);
-            Debug.Log("YOU DIE!");
+            m_AchivementSystem.AddProgress(EAchievementFlag.FinishedLevel3);
+            Debug.Log("L3!");
         }
     }
 

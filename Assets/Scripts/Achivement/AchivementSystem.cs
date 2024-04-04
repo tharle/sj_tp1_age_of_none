@@ -9,8 +9,6 @@ using static LevelData;
 
 public enum EAchievementFlag
 {
-    GoblinsKilledCount,
-    PlayerDeathCount,
     FinishedLevel1,
     FinishedLevel2,
     FinishedLevel3
@@ -18,6 +16,9 @@ public enum EAchievementFlag
 public class AchivementSystem : MonoBehaviour
 {
     BundleLoader m_Loader;
+
+    // utilsé s'il y a plus de un Achievement débloqué au même temps
+    private const int m_SizeOfEntryPanel = 100; // c'est un peu hard codé
 
     // Variables membres
     private AchievementData[] m_Achivements = new AchievementData[0];
@@ -58,20 +59,27 @@ public class AchivementSystem : MonoBehaviour
 
     private void ScanAchivementUnlocked(EAchievementFlag achievementFlagId)
     {
+        int countUnlockedAchievement = 0;
         for (int i = 0; i < m_Achivements.Length; i++) 
         {
             AchievementData archivement = m_Achivements[i];
             if (!archivement.Unlocked && archivement.VerifyAndUnlock(this))
             {
                 m_Achivements[i] = archivement;
-                UnlockAchievement(archivement);
+                UnlockAchievement(archivement, countUnlockedAchievement);
+                countUnlockedAchievement++;
             }
         }
     }
-    private void UnlockAchievement(AchievementData data)
+    private void UnlockAchievement(AchievementData data, int countUnlockedAchievement)
     {
         AchivementEntryVisual newEntry = LoadEntry();
         newEntry = Instantiate(newEntry, transform);
+        
+        // Si se plus de un archievement débloque ao même temps, il faut bouguer un peu
+        newEntry.transform.position = newEntry.transform.position + Vector3.up * m_SizeOfEntryPanel * countUnlockedAchievement;
+        // 
+
         newEntry.Data = data;
 
         // Save
