@@ -17,7 +17,7 @@ public class SaveData
     {
         DateTimeInBinary = DateTime.Now.ToBinary();
         PlayerData = new Player();
-        PlayerData.Achivements = new Achivement[0];
+        PlayerData.Achievements = new AchievementData[0];
         PlayerData.Levels = new List<LevelHistoric>(); 
     }
 }

@@ -15,17 +15,13 @@ public class PlayerMoveController : MonoBehaviour
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
 
+    private PlayerController m_PlayerController;
     private CinemachineBrain m_CinemachineBrain;
-    //private 
-
-
-
-    // TODO : Ajouter la rotation de la camera par rapport le axis Y
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Animator = GetComponentInChildren<Animator>();
-        // m_CinemachineBrain = CinemachineCore.Instance.GetActiveBrain(0); // je sais qu'il y a juste un BRAIN
+        m_PlayerController = PlayerController.Instance;
         SubscribeAll();
     }
     private void SubscribeAll()
@@ -41,11 +37,20 @@ public class PlayerMoveController : MonoBehaviour
 
     private void Move()
     {
-        // if (m_IsInterracting) return;
+        if (!m_PlayerController.IsPlaying) 
+        {
+            // Fait le Rigibody arreter
+            m_Rigidbody.velocity = Vector3.zero;
+            m_Rigidbody.useGravity = false;
 
+            // TODO changer pour Animation de victoire
+            m_Animator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY,0);
+            return;
+        }
 
+        // Petit truc pour ne pas bouger quand il fait l'animation de "Stop Running"
         AnimatorClipInfo[] animatorinfo = m_Animator.GetCurrentAnimatorClipInfo(0);
-        if (animatorinfo[0].clip.name == GameParameters.AnimationPlayer.NAME_RUN_TO_STOP) 
+        if (animatorinfo[0].clip.name == GameParameters.AnimationPlayer.NAME_RUN_TO_STOP)  
         {
             Vector3 velocityTemp = m_Rigidbody.velocity;
             velocityTemp.y = 0;

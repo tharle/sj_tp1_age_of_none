@@ -20,11 +20,11 @@ public class AchivementSystem : MonoBehaviour
     BundleLoader m_Loader;
 
     // Variables membres
-    private Achivement[] m_Achivements = new Achivement[0];
+    private AchievementData[] m_Achivements = new AchievementData[0];
     private Dictionary<EAchievementFlag, int> m_AchivementFlagTracker = new Dictionary<EAchievementFlag, int>();
 
     //Actions
-    public event Action<Achivement[]> OnAchivementChange;
+    public event Action<AchievementData[]> OnAchievementChange;
 
 
     //Instance
@@ -60,7 +60,7 @@ public class AchivementSystem : MonoBehaviour
     {
         for (int i = 0; i < m_Achivements.Length; i++) 
         {
-            Achivement archivement = m_Achivements[i];
+            AchievementData archivement = m_Achivements[i];
             if (!archivement.Unlocked && archivement.VerifyAndUnlock(this))
             {
                 m_Achivements[i] = archivement;
@@ -68,23 +68,23 @@ public class AchivementSystem : MonoBehaviour
             }
         }
     }
-    private void UnlockAchievement(Achivement data)
+    private void UnlockAchievement(AchievementData data)
     {
         AchivementEntryVisual newEntry = LoadEntry();
         newEntry = Instantiate(newEntry, transform);
         newEntry.Data = data;
 
         // Save
-        OnAchivementChange?.Invoke(m_Achivements);
+        OnAchievementChange?.Invoke(m_Achivements);
     }
 
 
-    public void Load(Achivement[] achivements)
+    public void Load(AchievementData[] achivements)
     {
         Load(achivements, new Dictionary<EAchievementFlag, int>());
     }
 
-    public void Load(Achivement[] achivements, Dictionary<EAchievementFlag, int> achivementFlagTracker)
+    public void Load(AchievementData[] achivements, Dictionary<EAchievementFlag, int> achivementFlagTracker)
     {
         m_Achivements = achivements;
         m_AchivementFlagTracker = achivementFlagTracker;

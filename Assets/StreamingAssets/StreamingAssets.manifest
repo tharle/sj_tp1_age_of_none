@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 3071267058
+CRC: 2071249807
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: sprite_stamp
       Dependencies: {}
     Info_1:
-      Name: prefab_level
+      Name: sfx
       Dependencies: {}
     Info_2:
-      Name: sfx
+      Name: prefab_level
       Dependencies: {}
     Info_3:
       Name: data

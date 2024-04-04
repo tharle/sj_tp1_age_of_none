@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public struct Player
 {
-    public Achivement[] Achivements;
+    public AchievementData[] Achievements;
     public List<LevelHistoric> Levels;
 
     public LevelHistoric GetLevel(Level.EType levelTypeId) 

@@ -44,11 +44,11 @@ public class PlayerControllerAchvTeste : MonoBehaviour
 
     private void SubscribeAll()
     {
-        m_AchivementSystem.OnAchivementChange += OnAchivementChange;
+        m_AchivementSystem.OnAchievementChange += OnAchivementChange;
     }
     private void DesubscribeAll()
     {
-        m_AchivementSystem.OnAchivementChange -= OnAchivementChange;
+        m_AchivementSystem.OnAchievementChange -= OnAchivementChange;
     }
 
     private void InitData()
@@ -59,7 +59,7 @@ public class PlayerControllerAchvTeste : MonoBehaviour
     private void LoadGame(SaveData data)
     {
         m_Player = data.PlayerData;
-        m_AchivementSystem.Load(data.PlayerData.Achivements);
+        m_AchivementSystem.Load(data.PlayerData.Achievements);
     }
 
     private void NewGame()
@@ -69,10 +69,10 @@ public class PlayerControllerAchvTeste : MonoBehaviour
         m_AchivementSystem.Load(achData.Achivements);
     }
 
-    private void OnAchivementChange(Achivement[] achivements)
+    private void OnAchivementChange(AchievementData[] achivements)
     {
         // Save data
-        m_Player.Achivements = achivements;
+        m_Player.Achievements = achivements;
         SaveSystem.Save(m_Player);
     }
 }

@@ -23,13 +23,14 @@ public class SaveSystem
         Save(saveData);
     }
 
-    public static void Save(LevelHistoric newLevelHistoric)
+    public static void Save(LevelHistoric newLevelHistoric, AchievementData[] achievements)
     {
         SaveData saveData = new SaveData();
 
         // Load the data for not losing others previus data saved
         Load(data => { saveData = data; });
         saveData.PlayerData.SetLevel(newLevelHistoric);
+        if(achievements != null && achievements.Length > 0) saveData.PlayerData.Achievements = achievements;
         Save(saveData);
     }
 

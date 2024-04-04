@@ -8,5 +8,5 @@ using UnityEngine.SocialPlatforms.Impl;
 [CreateAssetMenu]
 public class AchivementData : ScriptableObject
 {
-    public Achivement[] Achivements;
+    public AchievementData[] Achivements;
 }

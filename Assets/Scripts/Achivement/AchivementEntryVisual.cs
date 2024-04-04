@@ -9,7 +9,7 @@ public class AchivementEntryVisual : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_Description;
     [SerializeField] private Image m_Icon;
 
-    public Achivement Data
+    public AchievementData Data
     {
         set
         {
