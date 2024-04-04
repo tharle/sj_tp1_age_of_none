@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     private Player m_Player;
 
-    private int m_CountCoins;
+    private int m_CoinsCount;
+    private int m_CoinsMax;
+    private bool m_IsPlayerDied = false;
 
     public event Action<int> OnChangeCoinValue;
 
@@ -25,13 +27,25 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        m_CountCoins = 0;
+        m_CoinsCount = 0;
+        m_CoinsMax = FindObjectsOfType<CoinController>().Length;
     }
 
     public void CollectCoin(int value)
     {
         Debug.Log($"We collect {value} gold. ");
-        m_CountCoins += value;
-        OnChangeCoinValue?.Invoke(m_CountCoins);
+        m_CoinsCount += value;
+        OnChangeCoinValue?.Invoke(m_CoinsCount);
+    }
+
+    public ERank GetLevelRank()
+    {
+        int rank = 0;
+
+        if (!m_IsPlayerDied) rank++;
+
+        rank += Mathf.FloorToInt(3 * m_CoinsCount / m_CoinsMax);
+
+        return (ERank) rank;
     }
 }

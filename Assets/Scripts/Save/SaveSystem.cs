@@ -23,6 +23,16 @@ public class SaveSystem
         Save(saveData);
     }
 
+    public static void Save(LevelHistoric newLevelHistoric)
+    {
+        SaveData saveData = new SaveData();
+
+        // Load the data for not losing others previus data saved
+        Load(data => { saveData = data; });
+        saveData.PlayerData.SetLevel(newLevelHistoric);
+        Save(saveData);
+    }
+
     private static void Save(SaveData data)
     {
         Debug.Log("On save data.");

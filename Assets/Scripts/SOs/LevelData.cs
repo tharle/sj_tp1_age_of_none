@@ -13,6 +13,13 @@ public enum ERank
     S
 }
 
+[Serializable]
+public struct LevelHistoric
+{
+    public ERank RankId;
+    public Level.EType TypeId;
+}
+
 
 [Serializable]
 public struct Level
