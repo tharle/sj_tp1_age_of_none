@@ -37,7 +37,7 @@ public class DangerController : MonoBehaviour
 
     private void Update()
     {
-        if(Time.time - m_Time > m_LifeTime) gameObject.SetActive(false);
+        if(m_LifeTime >= 0 && Time.time - m_Time > m_LifeTime) gameObject.SetActive(false);
 
         transform.Translate(transform.forward * m_Speed * Time.deltaTime);
     }

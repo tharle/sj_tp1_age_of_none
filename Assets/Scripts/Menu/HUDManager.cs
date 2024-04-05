@@ -91,7 +91,7 @@ public class HUDManager : MonoBehaviour
 
     private void OnToggleMainMenu(bool show)
     {
-        m_MainMenuGameObject?.SetActive(show);
+        if(m_MainMenuGameObject != null && !m_MainMenuGameObject.IsDestroyed()) m_MainMenuGameObject.SetActive(show);
 
         if (show) m_MainMenuAnimator.SetTrigger(GameParameters.AnimationMenu.TRIGGER_OPEN);
         else m_MainMenuAnimator.SetTrigger(GameParameters.AnimationMenu.TRIGGER_CLOSE);

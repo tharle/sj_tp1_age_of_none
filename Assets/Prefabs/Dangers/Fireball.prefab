@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9528302, g: 0.34744263, b: 0.004494493, a: 1}
+      maxColor: {r: 1, g: 0.49711996, b: 0.15686274, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4839,8 +4839,8 @@ GameObject:
   - component: {fileID: 9043299698149581559}
   - component: {fileID: 9115847391263534737}
   - component: {fileID: 5277047843510332267}
-  - component: {fileID: 8695015274176814860}
   - component: {fileID: 4280531654784458849}
+  - component: {fileID: 1994260614934606478}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -4914,7 +4914,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8695015274176814860
+--- !u!114 &4280531654784458849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772577509131499059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2136b7167908f5d49b28775be50635fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Speed: 0
+  m_LifeTime: 4
+  m_AudioPlayer: 7
+  m_AudioCast: 4
+--- !u!135 &1994260614934606478
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4933,18 +4949,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.0960833
-  m_Center: {x: 0.18923362, y: 0.123927094, z: -0.010080834}
---- !u!114 &4280531654784458849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3772577509131499059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2136b7167908f5d49b28775be50635fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Speed: 0
+  m_Radius: 0.49999997
+  m_Center: {x: 0, y: 0, z: 0}
