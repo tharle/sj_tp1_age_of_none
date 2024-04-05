@@ -13,7 +13,8 @@ public enum EAudio
     SFXFireBall,
     SFXCoin,
     SFXJump,
-    SFXDamaged
+    SFXDamaged,
+    VFXVictory
 }
 public class AudioManager
 {
@@ -36,12 +37,13 @@ public class AudioManager
         m_AudioClips = m_Loader.LoadSFX();
     }
 
-    public void Play(EAudio audioClipId, Vector3 soundPosition, bool isLooping = false)
+    public void Play(EAudio audioClipId, Vector3 soundPosition, bool isLooping = false, float volume = 1f)
     {
         AudioSource audioSource;
         audioSource = m_AudioPool.GetAvailable();
         audioSource.clip = m_AudioClips[audioClipId];
         audioSource.transform.position = soundPosition;
+        audioSource.volume = volume;
 
         if (!audioSource.isPlaying) 
         {

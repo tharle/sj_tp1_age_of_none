@@ -67,6 +67,7 @@ public class LevelGameManager : MonoBehaviour
 
     public void PlayerGotEndOfLevel()
     {
+        AudioManager.GetInstance().Play(EAudio.VFXVictory, m_PlayerController.transform.position, false, 0.1f);
         LevelHistoric newLevelGameData = ProcessLevelProgress();
 
         LevelHistoric oldLevelGameData = new LevelHistoric();

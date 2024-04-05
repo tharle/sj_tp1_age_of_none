@@ -10,21 +10,30 @@ public class DangerController : MonoBehaviour
     [SerializeField] private float m_LifeTime = 4;
     public float LifeTime { set { m_LifeTime = value; } }
     
-    [SerializeField] private EAudio m_AudioId = EAudio.SFXFireBall;
-    public EAudio AudioId { set { m_AudioId = value; } }
+    [SerializeField] private EAudio m_AudioPlayer = EAudio.SFXDamaged;
+    public EAudio AudioPlayer { set { m_AudioPlayer = value; } }
+
+    [SerializeField] private EAudio m_AudioCast = EAudio.SFXFireBall;
+    public EAudio AudioCast { set { m_AudioCast = value; } }
 
     float m_Time;
 
     private void Start()
     {
-        m_Time = Time.time;
+        CastDanger();
     }
-
-
     private void OnEnable()
     {
+        CastDanger();
+    }
+
+    private void CastDanger()
+    {
+        AudioManager.GetInstance().Play(m_AudioCast, transform.position, false, 0.1f);
         m_Time = Time.time;
     }
+
+
 
     private void Update()
     {
@@ -36,7 +45,7 @@ public class DangerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PlayerController player = other.GetComponent<PlayerController>();
-        AudioManager.GetInstance().Play(m_AudioId, transform.position);
+        AudioManager.GetInstance().Play(m_AudioPlayer, transform.position);
         if (player)
         {
             player.DoDie();

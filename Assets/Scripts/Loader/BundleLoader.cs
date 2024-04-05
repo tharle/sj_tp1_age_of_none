@@ -77,7 +77,8 @@ public class BundleLoader: MonoBehaviour
             nameof(EAudio.SFXFireBall),
             nameof(EAudio.SFXJump),
             nameof(EAudio.SFXCoin),
-            nameof(EAudio.SFXDamaged)
+            nameof(EAudio.SFXDamaged),
+            nameof(EAudio.VFXVictory)
         };
 
         return assetNames;
@@ -117,6 +118,9 @@ public class BundleLoader: MonoBehaviour
                     break;
                 case nameof(EAudio.SFXDamaged):
                     audioId = EAudio.SFXDamaged;
+                    break;
+                case nameof(EAudio.VFXVictory):
+                    audioId = EAudio.VFXVictory;
                     break;
 
             }

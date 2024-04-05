@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4039939537
+CRC: 405564418
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 725166f717d6a98ac9311c1a1a119eac
+    Hash: ded394ccb9c74167e2200814f4edb5f0
   TypeTreeHash:
     serializedVersion: 2
     Hash: 9a2ca7bdbd1871f7131daf57de908e0c
@@ -20,5 +20,6 @@ Assets:
 - Assets/BundleAssets/Sounds/SFX/SFXRunDirty.wav
 - Assets/BundleAssets/Sounds/SFX/SFXJump.wav
 - Assets/BundleAssets/Sounds/SFX/SFXCoin.wav
+- Assets/BundleAssets/Sounds/SFX/VFXVictory.wav
 - Assets/BundleAssets/Sounds/SFX/SFXDamaged.wav
 Dependencies: []

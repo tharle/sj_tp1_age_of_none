@@ -31,22 +31,21 @@ public class PlayerMoveController : MonoBehaviour
 
     void Update()
     {
+        if (!m_PlayerController.IsPlaying)
+        {
+            // Fait le Rigibody arreter
+            m_Rigidbody.velocity = Vector3.zero;
+            m_Rigidbody.useGravity = false;
+            m_Animator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY, 0);
+            return;
+        }
+
         Move();
         Jump();
     }
 
     private void Move()
     {
-        if (!m_PlayerController.IsPlaying) 
-        {
-            // Fait le Rigibody arreter
-            m_Rigidbody.velocity = Vector3.zero;
-            m_Rigidbody.useGravity = false;
-
-            // TODO changer pour Animation de victoire
-            m_Animator.SetFloat(GameParameters.AnimationPlayer.FLOAT_VELOCITY,0);
-            return;
-        }
 
         // Petit truc pour ne pas bouger quand il fait l'animation de "Stop Running"
         AnimatorClipInfo[] animatorinfo = m_Animator.GetCurrentAnimatorClipInfo(0);

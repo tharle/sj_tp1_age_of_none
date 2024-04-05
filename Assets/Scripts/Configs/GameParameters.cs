@@ -54,6 +54,7 @@ public class GameParameters
     {
         public const string AXIS_HORIZONTAL = "Horizontal";
         public const string AXIS_VERTICAL = "Vertical";
+        public const string AXIS_MOUSE_HORIZONTAL = "Mouse X";
         public const KeyCode NEXT_TEXT = KeyCode.Space;
         public const KeyCode PLAYER_JUMP = KeyCode.Space;
     }

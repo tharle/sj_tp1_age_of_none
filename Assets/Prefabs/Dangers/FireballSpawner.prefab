@@ -45,4 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DangerPrefab: {fileID: 3772577509131499059, guid: 67ae888708e284342877fcd02dd868e8, type: 3}
-  m_Delay: 0.5
+  m_Speed: 8
+  m_Delay: 1
+  m_LifeTime: 5
+  m_AudioPlayer: 7
+  m_AudioCast: 4
