@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
     private int m_CoinsCount;
     private int m_CoinsMax;
     private bool m_IsPlayerDied = false;
+    private Vector3 m_StartPosition;
+    private Quaternion m_StartRotation;
     private bool m_IsPlaying = true;
     public bool IsPlaying { get { return m_IsPlaying; } }
 
@@ -30,6 +33,8 @@ public class PlayerController : MonoBehaviour
     {
         m_CoinsCount = 0;
         m_CoinsMax = FindObjectsOfType<CoinController>().Length;
+        m_StartPosition = transform.position;
+        m_StartRotation = transform.rotation;
     }
 
     public void CollectCoin(int value)
@@ -59,5 +64,11 @@ public class PlayerController : MonoBehaviour
         m_IsPlaying = false;
 
         return (ERank) rank;
+    }
+
+    public void DoDie()
+    {
+        m_IsPlayerDied = true;
+        transform.position = m_StartPosition;
     }
 }
