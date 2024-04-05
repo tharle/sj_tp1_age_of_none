@@ -3184,6 +3184,10 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1606038815782587425, guid: 67f3b9432c8a16042b15dece490ac230, type: 3}
+      propertyPath: m_AudioId
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

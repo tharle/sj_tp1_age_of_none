@@ -16,7 +16,6 @@ public class PlayerMenuEventAnimation : MonoBehaviour
 
     public void StopAllSounds()
     {
-        AudioManager.GetInstance().Stop(EAudio.SFXRunDirty);
-        AudioManager.GetInstance().Stop(EAudio.SFXWalkDirty);
+        AudioManager.GetInstance().StopAllLooping();
     }
 }

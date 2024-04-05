@@ -67,11 +67,27 @@ public class BundleLoader: MonoBehaviour
         return assets;
     }
 
+    private string[] GetSFXAssetNames()
+    {
+        string[] assetNames = {
+            nameof(EAudio.SFXConfirm), 
+            nameof(EAudio.SFXRunDirty), 
+            nameof(EAudio.SFXWalkDirty), 
+            nameof(EAudio.SFXText),
+            nameof(EAudio.SFXFireBall),
+            nameof(EAudio.SFXJump),
+            nameof(EAudio.SFXCoin),
+            nameof(EAudio.SFXDamaged)
+        };
+
+        return assetNames;
+    }
+
     public Dictionary<EAudio, AudioClip> LoadSFX()
     {
         Dictionary<EAudio, AudioClip> audioClipsBundle = new();
 
-        string[] assetNames = { nameof(EAudio.SFXConfirm), nameof(EAudio.SFXRunDirty), nameof(EAudio.SFXWalkDirty), nameof(EAudio.SFXText) };
+        string[] assetNames = GetSFXAssetNames();
         List<AudioClip> audioClips = LoadAll<AudioClip>(GameParameters.BundleNames.SFX, false, assetNames);
         foreach (AudioClip clip in audioClips)
         {
@@ -90,6 +106,19 @@ public class BundleLoader: MonoBehaviour
                 case nameof(EAudio.SFXText):
                     audioId = EAudio.SFXText;
                     break;
+                case nameof(EAudio.SFXFireBall):
+                    audioId = EAudio.SFXFireBall;
+                    break;
+                case nameof(EAudio.SFXJump):
+                    audioId = EAudio.SFXJump;
+                    break;
+                case nameof(EAudio.SFXCoin):
+                    audioId = EAudio.SFXCoin;
+                    break;
+                case nameof(EAudio.SFXDamaged):
+                    audioId = EAudio.SFXDamaged;
+                    break;
+
             }
 
             AudioClip newClip = Instantiate(clip);

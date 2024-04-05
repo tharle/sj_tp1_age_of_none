@@ -9,6 +9,7 @@ public class DangerSpawner : MonoBehaviour
     [SerializeField] private float m_Speed = 3f;
     [SerializeField] private float m_Delay = 0.5f;
     [SerializeField] private float m_LifeTime = 5f;
+    [SerializeField] private EAudio m_AudioId = EAudio.SFXFireBall;
 
     private List<GameObject> m_DangerPool = new List<GameObject>();
 
@@ -30,6 +31,7 @@ public class DangerSpawner : MonoBehaviour
             danger.transform.forward = transform.forward;
             danger.GetComponent<DangerController>().Speed = m_Speed;
             danger.GetComponent<DangerController>().LifeTime = m_LifeTime;
+            danger.GetComponent<DangerController>().AudioId = m_AudioId;
 
             yield return new WaitForSeconds(m_Delay);
         }

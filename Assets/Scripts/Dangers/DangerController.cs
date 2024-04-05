@@ -9,6 +9,9 @@ public class DangerController : MonoBehaviour
 
     [SerializeField] private float m_LifeTime = 4;
     public float LifeTime { set { m_LifeTime = value; } }
+    
+    [SerializeField] private EAudio m_AudioId = EAudio.SFXFireBall;
+    public EAudio AudioId { set { m_AudioId = value; } }
 
     float m_Time;
 
@@ -33,6 +36,7 @@ public class DangerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PlayerController player = other.GetComponent<PlayerController>();
+        AudioManager.GetInstance().Play(m_AudioId, transform.position);
         if (player)
         {
             player.DoDie();

@@ -16,6 +16,7 @@ public class CoinController : MonoBehaviour
         PlayerController playerController = other.GetComponent<PlayerController>();
         if (playerController != null)
         {
+            AudioManager.GetInstance().Play(EAudio.SFXCoin, transform.position);
             playerController.CollectCoin(m_Value);
             Destroy(gameObject);
         }

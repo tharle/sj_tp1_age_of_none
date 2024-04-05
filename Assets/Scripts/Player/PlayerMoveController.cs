@@ -89,6 +89,7 @@ public class PlayerMoveController : MonoBehaviour
     {
         if (Input.GetKeyDown(GameParameters.InputName.PLAYER_JUMP) && m_IsGrounded)
         {
+            AudioManager.GetInstance().Play(EAudio.SFXJump, transform.position);
             m_Rigidbody.AddForce(m_JumpForce * Vector3.up, ForceMode.Impulse);
             m_IsGrounded = false;
             m_Animator.SetBool(GameParameters.AnimationPlayer.BOOL_IS_GROUNDED, m_IsGrounded);
