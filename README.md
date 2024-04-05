@@ -9,14 +9,14 @@ Age of None
 
 ## Les Contrôles du personnage (sélection de niveau):
 
-Key | Menu Principal | Menu Sélection Niveau |
---- | --- | --- | 
-D/Arrow Left | --- | Navigation vers la Droite | 
-A/Arrow Right | --- | Navigation vers la Gauche | 
-W/Arrow Up | Navigation vers le Haut | --- | 
-S/Arrow Down | Navigation vers le Bas | --- | 
-Space/RMB sur texte | Sélection de l’option | Prochain dialogue | 
-Enter/RMB sur Start | Sélection de l’option | Entrer dans le niveau sélectionné | 
+Key | Menu Principal | Menu Sélection Niveau | In Game |
+--- | --- | --- | --- |
+D/Arrow Left | --- | Navigation vers la Droite | Déplacement vers la Droite |
+A/Arrow Right | --- | Navigation vers la Gauche | Déplacement vers la Gauche |
+W/Arrow Up | Navigation vers le Haut | --- | Déplacement contre la caméra |
+S/Arrow Down | Navigation vers le Bas | --- | Déplacement vers la caméra |
+Space/RMB sur texte | Sélection de l’option | Prochain dialogue | Sauter |
+Enter/RMB sur Start | Sélection de l’option | Entrer dans le niveau sélectionné | Rotation horizontal de la caméra |
 
 ## Les  niveaux: 
 
